@@ -111,7 +111,7 @@ It's important for us to make sure that any updates to the framework add value a
 Any commits should contain logically similar changes.  Commit messages (`git commit -m "[text]"`) should be informative but also concise.  Good commits make changes easier to review later.  To limit the number of commits, use `git rebase` to squash the commits down to a more reasonable number.
 
 ### Plugins
-If you're editing an existing plugin or adding a new one, there's an automated test called **plugintest** in **examples/** that will ensure the plugin adheres to the requirements of the framework.  To execute it, type: `python3 android-runner android-runner/examples/plugintest/config.json`.
+If you're editing an existing plugin or adding a new one, there's an automated test called **plugintest** in `examples` that will ensure the plugin adheres to the requirements of the framework.  To execute it, type: `python3 android-runner android-runner/examples/plugintest/config.json`.
 
 ## Submitting a Pull Request
 Pull requests should be made from secondary branches (ie, not `master`).  Also make sure the branch is not behind in commits compared to master.  Any changes that need to be made while a pull request is still pending review should be made on a third branch to prevent polluting the pull request with other changes if they're not relevant.  

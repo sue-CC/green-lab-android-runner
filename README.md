@@ -6,7 +6,7 @@ Android Runner (AR) is a tool for automatically executing measurement-based expe
 
 The following scientific publication gives an overview about the main components, plugins, and configurations of Android Runner (as of 2020): [A-Mobile 2020 publication](https://github.com/S2-group/android-runner/blob/master/documentation/A_Mobile_2020.pdf)  
 
-A complete tutorial on how to use Android Runner is available in the following YouTube playlist: [Android Runner Tutorials (YouTube)](https://www.youtube.com/watch?v=-ZXT176ljjI&list=PLLbZZOioDh3P50WcYbuBMZEJokJH3ZONr)    
+A complete tutorial on how to use Android Runner is available in the following YouTube playlist: [Android Runner Tutorials](https://www.youtube.com/watch?v=-ZXT176ljjI&list=PLLbZZOioDh3P50WcYbuBMZEJokJH3ZONr).
 
 As visualized below, Android Runner consists of the following components:
 - **Experiment orchestrator**: Is in charge of executing the whole experiment according to the experiment configuration provided by the user.
@@ -18,7 +18,18 @@ As visualized below, Android Runner consists of the following components:
 <img src="./documentation/overview.jpg" alt="Overview of Android Runner" width="500"/>
 </p>
 
-## How to cite Android Runner
+## Table of Contents
+- [How to Cite Android Runner](#how-to-cite-android-runner)
+- [Setup](#setup)
+- [Quick Start](#quick-start)
+- [Structure](#structure)
+  - [devices.json](#devicesjson)
+  - [Experiment Configuration](#experiment-configuration)
+- [Plugin Profilers](#plugin-profilers)
+- [Experiment Continuation](#experiment-continuation)
+- [Compatible Devices](#compatible-devices)
+
+## How to Cite Android Runner
 
 If Android Runner is helping your research, consider to cite it as follows, thanks!
 
@@ -33,10 +44,10 @@ If Android Runner is helping your research, consider to cite it as follows, than
 }
 ```
 
-## Setting up environment, installation and dependencies
-Instructions can be found [here](https://github.com/S2-group/android-runner/blob/master/CONTRIBUTING.md).  Instructions for specific plugins are included in the plugins' READMEs.
+## Setup
+Instructions can be found [here](https://github.com/S2-group/android-runner/blob/master/CONTRIBUTING.md). Instructions for specific plugins are included in the plugins' READMEs.
 
-## Quick start
+## Quick Start
 To run an experiment, run:
 ```bash
 python3 android-runner path_to_your_config.json
@@ -90,8 +101,7 @@ The duration of each run in milliseconds, default is 0. Setting a too short dura
 Restarts the adb connection after each run.  Default is *false*.
 
 **time_between_run** *positive integer*
-The time that the framework waits between 2 successive experiment runs. Default is 0.
-
+The time that the framework waits between 2 successive experiment runs. Default is 0. 
 The **usb_handler** option enables Android Runner to disable the USB connection during each run (while AR is profiling) and enables it after the run. This allows
 devices to charge inbetween runs. In addition, some (energy) profilers can only provide accurate measurements when there is no charge flowing into the battery during profiling. To use this option the device(s) should be connected to ADB using WiFi.
 The option expects a JSON object with "enable_command" and "disable_command" as keys and the corresponding commands as values.
@@ -173,7 +183,9 @@ Note that the last two examples result in the same behaviour.
 
 The **root_disable_charging** option specifies if the devices needs to be root charging disabled by writing the **charging_disabled_value** to the **usb_charging_disabled_file**. Different devices have different values for the **charging_disabled_value** and **usb_charging_disabled_file**, so be careful when using this feature. Also keep an eye out on the battery percentage when using this feature. If the battery dies when the charging is root disabled, it becomes impossible to charge the device via USB.
 
-**device_settings_reqs** can be set to programmatically enable and disable settings on the test device for native apps.  It was added to automate the process of turning on and off location services in a randomized experiment where some applications required it and others that didn't.  Two options available currently: location services with the help of Google and one without.  **location_high_accuracy** is the option for location services with Google; **location_gps_only** is the other.  More adb commands are likely to be added in the future that work for other sensors and settings.  Turn off location services before the experiment starts.
+**device_settings_reqs** can be set to programmatically enable and disable settings on the test device for native apps.  It was added to automate the process of turning on and off location services in a randomized experiment where some applications required it and others that didn't.  Two options available currently: location services with the help of Google and one without.  
+
+**location_high_accuracy** is the option for location services with Google; **location_gps_only** is the other.  More adb commands are likely to be added in the future that work for other sensors and settings.  Turn off location services before the experiment starts.
 
 **WARNING:** Always check the battery settings of the device for the charging status of the device after using root disable charging.
 If the device isn't charging after the experiment is finished, reset the charging file yourself via adb su command line using:
@@ -273,9 +285,14 @@ Instead of a path to string it is also possible to provide a JSON object in the 
       }
    ]
 ```
-Within the JSON object you can use "type" to "python3", "monkeyrunner" or, "monkeyreplay" depending on the type of script. "python3" can be used for a standard python script,  "monkeyreplay" for running a Monkeyrunner script with the use of the Monkeyrunner framework and "monkeyrunner" can be used to run a Monkeyrunner directly without the entire Monkeyrunner framework. The "timeout" option is to set a maximum run time in miliseconds for the specified script. The optional option "logcat_regex" filters the logcat messages such that it only keeps lines where the log message matches "\<expr\>" where "\<expr\>" is a regular expression.
+- Within the JSON object you can use `"type"` to `"python3"`, `"monkeyrunner"` or, `"monkeyreplay"` depending on the type of script.
+  - `"python3"` can be used for a standard python script,
+  - `"monkeyreplay"` for running a Monkeyrunner script with the use of the Monkeyrunner framework and 
+  - `"monkeyrunner"` can be used to run a Monkeyrunner directly without the entire Monkeyrunner framework. 
+- The `"timeout"` option is to set a maximum run time in miliseconds for the specified script. 
+- The optional option `"logcat_regex"` filters the logcat messages such that it only keeps lines where the log message matches "\<expr\>" where "\<expr\>" is a regular expression.
 
-## Plugin profilers
+## Plugin Profilers
 It is possible to write your own profiler and use this with Android Runner. To do so write your profiler in such a way
 that it uses [this profiler.py class](AndroidRunner/Plugins/Profiler.py) as parent class. The device object that is mentioned within the profiler.py class is based on the device.py of this repo. To see what can be done with this object, see the source code [here](AndroidRunner/Device.py).
 
@@ -284,9 +301,9 @@ You can use your own profiler in the same way as the default profilers, you just
 - Your python file isn't called 'Profiler.py' as this file will be overwritten.
 - The python file is placed in its own directory inside the directory called 'Plugins'; the name of the directory must be in lowercase
 
-To test your own profiler, you can make use of the 'plugintest' experiment type which can be seen [here](examples/plugintest/)
+To test your own profiler, you can make use of the 'plugintest' experiment type which can be seen [here](examples/plugintest/).
 
-## Experiment continuation
+## Experiment Continuation
 In case of an error or a user abort during experiment execution, it is possible to continue the experiment if desired. This is possible by using a ```--progress``` tag with the starting command. For example:
 
 ```python3 android_runner your_config.json --progress path/to/progress.xml```
@@ -296,9 +313,11 @@ The table below shows on which mobile devices Android Runner and its profilers w
 
 | Device/Profiler             	| Trepn                                                	| BatteryStats 	| Perfetto*      	|
 |-----------------------------	|------------------------------------------------------	|--------------	|----------------	|
-| LG Nexus 5X (Android 8.1.0) 	| No, energy consumption measurements always return 0. 	| Yes          	| Not applicable 	|
-| Samsung Galaxy J7 Duo       	| No, energy consumption measurements always return 0. 	| Yes          	| Not applicable 	|
+| LG Nexus 5X (Android 8.1.0) 	| No, energy consumption measurements always return 0. 	| Yes          	| N/A 	|
+| Samsung Galaxy J7 Duo       	| No, energy consumption measurements always return 0. 	| Yes          	| N/A 	|
 | Google Pixel 3              	| No, energy consumption measurements always return 0. 	| Yes          	| Yes            	|
 | Google Pixel 5G             	| No, energy consumption measurements always return 0. 	| Yes          	| Yes            	|
+
+
 * Please note that Perfetto may not be suited for doing energy consumption measurements, see [https://github.com/S2-group/android-runner/tree/master/AndroidRunner/Plugins/perfetto#limitations-issues--caveats](here).
 
