@@ -100,7 +100,11 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
 It's important for us to make sure that any updates to the framework add value and that the updates adhere to the original goals of the framework.  Before spending a lot of time making substantial changes, please raise an `issue` on Github so we're made aware of the changes you'd like to implement.  We'll provide feedback to inform you whether we think it's viable.
 
 ## Environment
-Your forked repository will come with one branch, called `master`.  Create additional branches for experiments and/or development with `git branch branch_name`.  To update your forked repo with parent repo, `git checkout master` and type `git fetch upstream` followed by `git rebase upstream/master` so your local work is put on top of any changes made to the parent repo.  Note, this may mean you'll have to stash whatever you were working on.  In this case, `git stash save "message"` before `git checkout master`.  Once `master` has been updated, checkout the other branches to update with `git merge master`.  Then, `git stash pop stash@{#}` to continue working on changes.
+- Your forked repository will come with one branch, called `master`.
+- Create additional branches for experiments and/or development with `git branch branch_name`.
+- To update your forked repo with parent repo, `git checkout master` and type `git fetch upstream` followed by `git rebase upstream/master` so your local work is put on top of any changes made to the parent repo. 
+    - Note, this may mean you'll have to stash whatever you were working on.  In this case, `git stash save "message"` before `git checkout master`.
+- Once `master` has been updated, checkout the other branches to update with `git merge master`.  Then, `git stash pop stash@{#}` to continue working on changes.
 
 ## Making Changes to Your Forked Repository
 ### Commits
