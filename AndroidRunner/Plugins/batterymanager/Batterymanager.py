@@ -13,6 +13,7 @@ from AndroidRunner.Plugins.Profiler import Profiler
 
 
 class Batterymanager(Profiler):
+
     AVAILABLE_DATA_POINTS = ['ACTION_CHARGING', 'ACTION_DISCHARGING',
                              'BATTERY_HEALTH_COLD', 'BATTERY_HEALTH_DEAD', 'BATTERY_HEALTH_GOOD',
                              'BATTERY_HEALTH_OVERHEAT',
@@ -65,7 +66,7 @@ class Batterymanager(Profiler):
     def start_profiling(self, device, **kwargs):
         if 'adb_log' in self.persistency_strategy:
             # start looking for batterymanager data
-            print('TODO: ADB LOGGING')
+            self.logger.info('TODO: ADB LOGGING')
 
         device.shell(self.build_intent(True))
 
@@ -76,8 +77,25 @@ class Batterymanager(Profiler):
         if isStart:
             intent_dataFields = ','.join(self.data_points)
             intent_toCSV = 'true' if 'csv' in self.persistency_strategy else 'false'
-            intent = f'am start-foreground-service -n "com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService" --ei sampleRate {self.sampling_rate} \ --es "dataFields" {intent_dataFields} \ --ez toCSV {intent_toCSV}'
+            intent = f'am start-foreground-service -n "com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService" --ei sampleRate {self.sampling_rate} --es "dataFields" "{intent_dataFields}" --ez toCSV {intent_toCSV}'
         else:
-            intent = 'am stopservice com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService'
+            intent = f'am stopservice com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService'
 
         return intent
+
+    def collect_results(self, device):
+        # if 'csv' in self.persistency_strategy:
+        device.pull('/storage/emulated/0/Documents/BatteryManager.csv', op.join(self.output_dir, 'BatteryManager.csv'))
+            # device.shell('rm -f /storage/emulated/0/Documents/BatteryManager.csv')
+
+    def dependencies(self):
+        return ['com.example.batterymanager_utility']
+
+    def load(self, device):
+        return
+
+    def unload(self, device):
+        return
+
+    def set_output(self, output_dir):
+        self.output_dir = output_dir

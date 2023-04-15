@@ -1,7 +1,7 @@
 {
   "type": "native",
   "devices": {
-    "OPNord": {}
+    "OP": {}
   },
   "repetitions": 1,
   "apps": [

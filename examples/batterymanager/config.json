@@ -7,13 +7,12 @@
   "apps": [
     "com.android.chrome"
   ],
+  "duration": 50000,
   "profilers": {
     "batterymanager": {
-      "sample_interval": 100,
+      "sample_interval": 1000,
       "data_points": [
-        "ACTION_CHARGING",
-        "ACTION_DISCHARGING",
-        "EXTRA_VOLTAGE"
+        "BATTERY_HEALTH_COLD","BATTERY_STATUS_CHARGING","EXTRA_VOLTAGE","EXTRA_TEMPERATURE"
       ],
       "persistency_strategy": ["csv", "adb_log"]
     }
