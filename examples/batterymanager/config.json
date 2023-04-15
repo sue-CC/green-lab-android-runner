@@ -9,13 +9,13 @@
   ],
   "profilers": {
     "batterymanager": {
-      "subject_aggregation": "default",
-      "experiment_aggregation": "Scripts/aggregate_android.py",
       "sample_interval": 100,
       "data_points": [
-        "cpu",
-        "mem"
-      ]
+        "ACTION_CHARGING",
+        "ACTION_DISCHARGING",
+        "EXTRA_VOLTAGE"
+      ],
+      "persistency_strategy": ["csv", "adb_log"]
     }
   },
   "scripts": {
