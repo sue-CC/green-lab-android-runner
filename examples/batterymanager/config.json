@@ -1,20 +1,22 @@
 {
   "type": "native",
   "devices": {
-    "OP": {}
+    "OPNord": {}
   },
-  "repetitions": 1,
+  "repetitions": 2,
   "apps": [
     "com.android.chrome"
   ],
-  "duration": 50000,
+  "duration": 1000,
   "profilers": {
     "batterymanager": {
       "sample_interval": 1000,
       "data_points": [
         "BATTERY_HEALTH_COLD","BATTERY_STATUS_CHARGING","EXTRA_VOLTAGE","EXTRA_TEMPERATURE"
       ],
-      "persistency_strategy": ["csv", "adb_log"]
+      "persistency_strategy": [
+        "csv", "adb_log"
+      ]
     }
   },
   "scripts": {

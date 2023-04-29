@@ -1,12 +1,13 @@
 {
   "type": "native",
   "devices": {
-    "OP": {}
+    "OPNord": {}
   },
-  "repetitions": 1,
+  "repetitions": 3,
   "apps": [
     "com.android.chrome"
   ],
+  "duration": 2000,
   "profilers": {
     "android": {
       "subject_aggregation": "default",
