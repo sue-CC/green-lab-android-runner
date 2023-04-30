@@ -6,6 +6,8 @@ from AndroidRunner.Plugins.Profiler import Profiler
 
 class Batterymanager(Profiler):
 
+    ANDROID_VERSION_11_API_LEVEL_30 = 30
+    BATTERYMANAGER_DEVICE_OUTPUT_FILE = '/storage/emulated/0/Documents/BatteryManager.csv'
     AVAILABLE_DATA_POINTS = ['ACTION_CHARGING', 'ACTION_DISCHARGING',
                              'BATTERY_HEALTH_COLD', 'BATTERY_HEALTH_DEAD', 'BATTERY_HEALTH_GOOD',
                              'BATTERY_HEALTH_OVERHEAT',
@@ -35,11 +37,11 @@ class Batterymanager(Profiler):
 
         self.data_points = self.validate_config('data_points',
                                                 config['data_points'],
-                                                self.AVAILABLE_DATA_POINTS)
+                                                Batterymanager.AVAILABLE_DATA_POINTS)
 
         self.persistency_strategy = self.validate_config('persistency_strategy',
                                                          config['persistency_strategy'],
-                                                         self.AVAILABLE_PERSISTENCY_STRATEGIES)
+                                                         Batterymanager.AVAILABLE_PERSISTENCY_STRATEGIES)
 
     # Check if the selected data points are valid
     def validate_config(self, field, raw_data_points, available_data_points):
@@ -53,9 +55,14 @@ class Batterymanager(Profiler):
 
     def start_profiling(self, device, **kwargs):
         if 'adb_log' in self.persistency_strategy:
-            # start looking for batterymanager data
-            self.logger.info('TODO: ADB LOGGING')
+            global logcat_file
+            logcat_file = op.join(self.output_dir,
+                                  'logcat_{}_{}.txt'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
 
+        if 'csv' in self.persistency_strategy:
+            global batterymanager_csv_file
+            batterymanager_csv_file = op.join(self.output_dir,
+                                                '{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
         device.shell(self.build_intent(True))
 
     def stop_profiling(self, device, **kwargs):
@@ -73,15 +80,29 @@ class Batterymanager(Profiler):
 
     def collect_results(self, device):
         if 'csv' in self.persistency_strategy:
-            device.pull('/storage/emulated/0/Documents/BatteryManager.csv', op.join(self.output_dir, 'BatteryManager.csv'))
-            device.shell('rm -f /storage/emulated/0/Documents/BatteryManager.csv')
-            # rename pulled file to avoid overwriting
-            if os.path.isfile(op.join(self.output_dir, 'BatteryManager.csv')):
-                new_filename = '{}_{}.csv'.format(
-                    device.id, time.strftime('%Y.%m.%d_%H%M%S'))
-                new_name = op.join(self.output_dir, new_filename)
-                old_name = op.join(self.output_dir, 'BatteryManager.csv')
-                os.rename(old_name, new_name)
+            device.pull('{}'.format(self.BATTERYMANAGER_DEVICE_OUTPUT_FILE), batterymanager_csv_file)
+            device.shell('rm -f {}'.format(self.BATTERYMANAGER_DEVICE_OUTPUT_FILE))
+
+        if 'adb_log' in self.persistency_strategy:
+            self.pull_logcat(device)
+            # TODO: parse logcat file and extract batterymanager data
+
+    @staticmethod
+    def pull_logcat(device):
+        """
+        From Android 11 (API level 30) the path /mnt/sdcard cannot be accessed via ADB
+        as you don't have permissions to access this path. However, we can access /sdcard.
+        """
+        device_api_version = int(device.shell("getprop ro.build.version.sdk"))
+
+        if device_api_version >= Batterymanager.ANDROID_VERSION_11_API_LEVEL_30:
+            logcat_output_file_device_dir_path = "/sdcard"
+        else:
+            logcat_output_file_device_dir_path = "/mnt/sdcard"
+
+        device.shell(f"logcat -f {logcat_output_file_device_dir_path}/logcat.txt -d")
+        device.pull(f"{logcat_output_file_device_dir_path}/logcat.txt", logcat_file)
+        device.shell(f"rm -f {logcat_output_file_device_dir_path}/logcat.txt")
 
     def dependencies(self):
         return ['com.example.batterymanager_utility']
@@ -99,7 +120,4 @@ class Batterymanager(Profiler):
         return
 
     def aggregate_end(self, data_dir, output_file):
-        return
-
-    def aggregate_final(self, data_dir, output_file):
         return

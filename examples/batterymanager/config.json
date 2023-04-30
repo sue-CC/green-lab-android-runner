@@ -3,16 +3,31 @@
   "devices": {
     "OPNord": {}
   },
-  "repetitions": 2,
+  "repetitions": 5,
   "apps": [
     "com.android.chrome"
   ],
-  "duration": 1000,
+  "duration": 10000,
   "profilers": {
     "batterymanager": {
-      "sample_interval": 1000,
+      "sample_interval": 1,
       "data_points": [
-        "BATTERY_HEALTH_COLD","BATTERY_STATUS_CHARGING","EXTRA_VOLTAGE","EXTRA_TEMPERATURE"
+        "ACTION_CHARGING", "ACTION_DISCHARGING",
+        "BATTERY_HEALTH_COLD", "BATTERY_HEALTH_DEAD", "BATTERY_HEALTH_GOOD",
+        "BATTERY_HEALTH_OVERHEAT",
+        "BATTERY_HEALTH_OVER_VOLTAGE", "BATTERY_HEALTH_UNKNOWN",
+        "BATTERY_HEALTH_UNSPECIFIED_FAILURE",
+        "BATTERY_PLUGGED_AC", "BATTERY_PLUGGED_DOCK", "BATTERY_PLUGGED_USB",
+        "BATTERY_PLUGGED_WIRELESS",
+        "BATTERY_PROPERTY_CAPACITY", "BATTERY_PROPERTY_CHARGE_COUNTER",
+        "BATTERY_PROPERTY_CURRENT_AVERAGE",
+        "BATTERY_PROPERTY_CURRENT_NOW", "BATTERY_PROPERTY_ENERGY_COUNTER",
+        "BATTERY_PROPERTY_STATUS",
+        "BATTERY_STATUS_CHARGING", "BATTERY_STATUS_DISCHARGING", "BATTERY_STATUS_FULL",
+        "BATTERY_STATUS_NOT_CHARGING", "BATTERY_STATUS_UNKNOWN",
+        "EXTRA_BATTERY_LOW", "EXTRA_HEALTH", "EXTRA_ICON_SMALL", "EXTRA_LEVEL", "EXTRA_PLUGGED",
+        "EXTRA_PRESENT",
+        "EXTRA_SCALE", "EXTRA_STATUS", "EXTRA_TECHNOLOGY", "EXTRA_TEMPERATURE", "EXTRA_VOLTAGE"
       ],
       "persistency_strategy": [
         "csv", "adb_log"
@@ -27,5 +42,5 @@
     "after_run": "Scripts/after_run.py",
     "after_experiment": "Scripts/after_experiment.py"
   },
-  "time_between_run": 500
+  "time_between_run": 2000
 }
