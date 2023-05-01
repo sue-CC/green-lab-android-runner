@@ -1,5 +1,7 @@
+import csv
 import os
 import os.path as op
+import re
 import time
 from AndroidRunner.Plugins.Profiler import Profiler
 
@@ -8,6 +10,7 @@ class Batterymanager(Profiler):
 
     ANDROID_VERSION_11_API_LEVEL_30 = 30
     BATTERYMANAGER_DEVICE_OUTPUT_FILE = '/storage/emulated/0/Documents/BatteryManager.csv'
+
     AVAILABLE_DATA_POINTS = ['ACTION_CHARGING', 'ACTION_DISCHARGING',
                              'BATTERY_HEALTH_COLD', 'BATTERY_HEALTH_DEAD', 'BATTERY_HEALTH_GOOD',
                              'BATTERY_HEALTH_OVERHEAT',
@@ -55,14 +58,17 @@ class Batterymanager(Profiler):
 
     def start_profiling(self, device, **kwargs):
         if 'adb_log' in self.persistency_strategy:
+            global logcat_csv_file
             global logcat_file
+            logcat_csv_file = op.join(self.output_dir,
+                                      'logcat_{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
             logcat_file = op.join(self.output_dir,
                                   'logcat_{}_{}.txt'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
 
         if 'csv' in self.persistency_strategy:
             global batterymanager_csv_file
             batterymanager_csv_file = op.join(self.output_dir,
-                                                '{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
+                                              '{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
         device.shell(self.build_intent(True))
 
     def stop_profiling(self, device, **kwargs):
@@ -85,7 +91,8 @@ class Batterymanager(Profiler):
 
         if 'adb_log' in self.persistency_strategy:
             self.pull_logcat(device)
-            # TODO: parse logcat file and extract batterymanager data
+            header, rows = self.parse_logcat()
+            self.write_logcat_csv(header, rows)
 
     @staticmethod
     def pull_logcat(device):
@@ -104,13 +111,36 @@ class Batterymanager(Profiler):
         device.pull(f"{logcat_output_file_device_dir_path}/logcat.txt", logcat_file)
         device.shell(f"rm -f {logcat_output_file_device_dir_path}/logcat.txt")
 
+    @staticmethod
+    def parse_logcat():
+        header_pattern = re.compile(r'.*BatteryMgr:DataCollectionService: onStartCommand: rawFields => (.*)')
+        data_pattern = re.compile(r'.*BatteryMgr:DataCollectionService: stats => (.*)')
+
+        with open(logcat_file, 'r') as lc_file:
+            f = lc_file.read()
+            header = re.findall(header_pattern, f)
+            header = ('Timestamp,' + header[0]).split(',')
+            rows = re.findall(data_pattern, f)
+            rows.sort(key=lambda x: x[0])
+            rows = [row.split(',') for row in rows]
+
+        return header, rows
+
+    @staticmethod
+    def write_logcat_csv(header, rows):
+        with open(logcat_csv_file, 'w') as lc_csv_file:
+            csv_writer = csv.writer(lc_csv_file)
+            csv_writer.writerow(header)
+            for row in rows:
+                csv_writer.writerow(row)
+
+    def unload(self, device):
+        return
+
     def dependencies(self):
         return ['com.example.batterymanager_utility']
 
     def load(self, device):
-        return
-
-    def unload(self, device):
         return
 
     def set_output(self, output_dir):
