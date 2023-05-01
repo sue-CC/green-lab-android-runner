@@ -1,8 +1,7 @@
 import csv
-import os
 import os.path as op
-import re
 import time
+
 from AndroidRunner.Plugins.Profiler import Profiler
 
 
@@ -10,7 +9,6 @@ class Batterymanager(Profiler):
 
     ANDROID_VERSION_11_API_LEVEL_30 = 30
     BATTERYMANAGER_DEVICE_OUTPUT_FILE = '/storage/emulated/0/Documents/BatteryManager.csv'
-
     AVAILABLE_DATA_POINTS = ['ACTION_CHARGING', 'ACTION_DISCHARGING',
                              'BATTERY_HEALTH_COLD', 'BATTERY_HEALTH_DEAD', 'BATTERY_HEALTH_GOOD',
                              'BATTERY_HEALTH_OVERHEAT',
@@ -46,7 +44,6 @@ class Batterymanager(Profiler):
                                                          config['persistency_strategy'],
                                                          Batterymanager.AVAILABLE_PERSISTENCY_STRATEGIES)
 
-    # Check if the selected data points are valid
     def validate_config(self, field, raw_data_points, available_data_points):
         invalid_data_points = [
             dp for dp in raw_data_points if dp not in set(available_data_points)]
@@ -56,19 +53,8 @@ class Batterymanager(Profiler):
         return [dp for dp in raw_data_points
                 if dp in available_data_points]
 
+    # Check if the selected data points are valid
     def start_profiling(self, device, **kwargs):
-        if 'adb_log' in self.persistency_strategy:
-            global logcat_csv_file
-            global logcat_file
-            logcat_csv_file = op.join(self.output_dir,
-                                      'logcat_{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
-            logcat_file = op.join(self.output_dir,
-                                  'logcat_{}_{}.txt'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
-
-        if 'csv' in self.persistency_strategy:
-            global batterymanager_csv_file
-            batterymanager_csv_file = op.join(self.output_dir,
-                                              '{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
         device.shell(self.build_intent(True))
 
     def stop_profiling(self, device, **kwargs):
@@ -86,53 +72,47 @@ class Batterymanager(Profiler):
 
     def collect_results(self, device):
         if 'csv' in self.persistency_strategy:
+            batterymanager_csv_file = op.join(self.output_dir,
+                                              '{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
             device.pull('{}'.format(self.BATTERYMANAGER_DEVICE_OUTPUT_FILE), batterymanager_csv_file)
             device.shell('rm -f {}'.format(self.BATTERYMANAGER_DEVICE_OUTPUT_FILE))
 
         if 'adb_log' in self.persistency_strategy:
-            self.pull_logcat(device)
-            header, rows = self.parse_logcat()
-            self.write_logcat_csv(header, rows)
+            header, rows = self.get_logcat(device)
+            self.write_logcat_csv(device, header, rows)
 
     @staticmethod
-    def pull_logcat(device):
-        """
-        From Android 11 (API level 30) the path /mnt/sdcard cannot be accessed via ADB
-        as you don't have permissions to access this path. However, we can access /sdcard.
-        """
-        device_api_version = int(device.shell("getprop ro.build.version.sdk"))
+    def get_logcat(device):
+        header_pattern = 'BatteryMgr:DataCollectionService: onStartCommand: rawFields => '
+        data_pattern = 'BatteryMgr:DataCollectionService: stats => '
 
-        if device_api_version >= Batterymanager.ANDROID_VERSION_11_API_LEVEL_30:
-            logcat_output_file_device_dir_path = "/sdcard"
-        else:
-            logcat_output_file_device_dir_path = "/mnt/sdcard"
+        raw_header = device.logcat_regex(header_pattern)
+        raw_rows = device.logcat_regex(data_pattern)
 
-        device.shell(f"logcat -f {logcat_output_file_device_dir_path}/logcat.txt -d")
-        device.pull(f"{logcat_output_file_device_dir_path}/logcat.txt", logcat_file)
-        device.shell(f"rm -f {logcat_output_file_device_dir_path}/logcat.txt")
+        return raw_header, raw_rows
 
-    @staticmethod
-    def parse_logcat():
-        header_pattern = re.compile(r'.*BatteryMgr:DataCollectionService: onStartCommand: rawFields => (.*)')
-        data_pattern = re.compile(r'.*BatteryMgr:DataCollectionService: stats => (.*)')
+    def write_logcat_csv(self, device, header, rows):
+        header, rows = Batterymanager.preprocess_logcat(header, rows)
+        logcat_csv_file = op.join(self.output_dir,
+                                  'logcat_{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
 
-        with open(logcat_file, 'r') as lc_file:
-            f = lc_file.read()
-            header = re.findall(header_pattern, f)
-            header = ('Timestamp,' + header[0]).split(',')
-            rows = re.findall(data_pattern, f)
-            rows.sort(key=lambda x: x[0])
-            rows = [row.split(',') for row in rows]
-
-        return header, rows
-
-    @staticmethod
-    def write_logcat_csv(header, rows):
         with open(logcat_csv_file, 'w') as lc_csv_file:
             csv_writer = csv.writer(lc_csv_file)
             csv_writer.writerow(header)
             for row in rows:
                 csv_writer.writerow(row)
+
+    @staticmethod
+    def preprocess_logcat(header, rows):
+        header = header.split('=> ')[1]
+        header = 'Timestamp,' + header
+        header = header.split(',')
+
+        rows = rows.split('\n')
+        rows = [row.split('=> ')[1].split(',') for row in rows]
+
+        rows.sort(key=lambda x: x[0])
+        return header, rows
 
     def unload(self, device):
         return

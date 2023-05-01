@@ -3,14 +3,14 @@
   "devices": {
     "OPNord": {}
   },
-  "repetitions": 5,
+  "repetitions": 3,
   "apps": [
     "com.android.chrome"
   ],
-  "duration": 10000,
+  "duration": 2000,
   "profilers": {
     "batterymanager": {
-      "sample_interval": 1,
+      "sample_interval": 500,
       "data_points": [
         "ACTION_CHARGING", "ACTION_DISCHARGING",
         "BATTERY_HEALTH_COLD", "BATTERY_HEALTH_DEAD", "BATTERY_HEALTH_GOOD",
@@ -42,5 +42,5 @@
     "after_run": "Scripts/after_run.py",
     "after_experiment": "Scripts/after_experiment.py"
   },
-  "time_between_run": 2000
+  "time_between_run": 1000
 }
