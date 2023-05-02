@@ -64,9 +64,12 @@ class Batterymanager(Profiler):
         if is_start:
             intent_data_fields = ','.join(self.data_points)
             intent_to_csv = 'true' if 'csv' in self.persistency_strategy else 'false'
-            intent = f'am start-foreground-service -n "com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService" --ei sampleRate {self.sampling_rate} --es "dataFields" "{intent_data_fields}" --ez toCSV {intent_to_csv}'
+            intent = f'am start-foreground-service -n "com.example.batterymanager_utility/com.example' \
+                     f'.batterymanager_utility.DataCollectionService" --ei sampleRate {self.sampling_rate} --es ' \
+                     f'"dataFields" "{intent_data_fields}" --ez toCSV {intent_to_csv}'
         else:
-            intent = f'am stopservice com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService'
+            intent = f'am stopservice com.example.batterymanager_utility/com.example.batterymanager_utility' \
+                     f'.DataCollectionService'
 
         return intent
 
