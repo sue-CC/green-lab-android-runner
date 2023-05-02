@@ -61,5 +61,7 @@ The persistency strategy that should be used. The available options are:
 
 ## Limitations and Known Issues
 * The `EXTRA_*` values do not update between runs. We are working on a fix for this issue.
+* The companion app keeps everything in memory and then dumps it to a csv file. This means that if the user wants to use 
+  memory as a dependent variable, they should not use the `csv` persistency strategy.
 * Very low `sample_interval` values causes the number of observations from the companion app to be inconsistent.
 
