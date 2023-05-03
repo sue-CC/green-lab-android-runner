@@ -1,3 +1,3 @@
 # noinspection PyUnusedLocal
 def main(device, *args, **kwargs):
-    pass
+    device.uninstall('com.example.batterymanager_utility')

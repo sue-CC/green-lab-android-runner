@@ -74,6 +74,8 @@ class Batterymanager(Profiler):
         return intent
 
     def collect_results(self, device):
+        # sleep for 5 seconds to make sure the service has stopped
+        time.sleep(5)
         if 'csv' in self.persistency_strategy:
             batterymanager_csv_file = op.join(self.output_dir,
                                               '{}_{}.csv'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
@@ -81,8 +83,29 @@ class Batterymanager(Profiler):
             device.shell('rm -f {}'.format(self.BATTERYMANAGER_DEVICE_OUTPUT_FILE))
 
         if 'adb_log' in self.persistency_strategy:
+            logcat_file = op.join(self.output_dir,
+                                  'logcat_{}_{}.txt'.format(device.id, time.strftime('%Y.%m.%d_%H%M%S')))
+            self.pull_logcat(device, logcat_file)
+
             header, rows = self.get_logcat(device)
             self.write_logcat_csv(device, header, rows)
+
+    @staticmethod
+    def pull_logcat(device, logcat_file):
+        """
+        From Android 11 (API level 30) the path /mnt/sdcard cannot be accessed via ADB
+        as you don't have permissions to access this path. However, we can access /sdcard.
+        """
+        device_api_version = int(device.shell("getprop ro.build.version.sdk"))
+
+        if device_api_version >= Batterymanager.ANDROID_VERSION_11_API_LEVEL_30:
+            logcat_output_file_device_dir_path = "/sdcard"
+        else:
+            logcat_output_file_device_dir_path = "/mnt/sdcard"
+
+        device.shell(f"logcat -f {logcat_output_file_device_dir_path}/logcat.txt -d")
+        device.pull(f"{logcat_output_file_device_dir_path}/logcat.txt", logcat_file)
+        device.shell(f"rm -f {logcat_output_file_device_dir_path}/logcat.txt")
 
     @staticmethod
     def get_logcat(device):
@@ -108,7 +131,7 @@ class Batterymanager(Profiler):
     @staticmethod
     def preprocess_logcat(header, rows):
         header = header.split('=> ')[1]
-        header = 'Timestamp,' + header
+        header = header
         header = header.split(',')
 
         rows = rows.split('\n')
@@ -121,7 +144,7 @@ class Batterymanager(Profiler):
         return
 
     def dependencies(self):
-        return ['com.example.batterymanager_utility']
+        return [] # ['com.example.batterymanager_utility']
 
     def load(self, device):
         return
