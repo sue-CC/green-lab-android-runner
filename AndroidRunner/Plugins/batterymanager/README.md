@@ -8,6 +8,9 @@ This plugin uses the Android BatteryManager API to gather battery related data. 
   * [code](https://github.com/Raiduy/ar-batterymanager-script/) (https://github.com/Raiduy/ar-batterymanager-script/)
 * `BATTERY_PLUGGED_DOCK` data point is available for Android version Tiramisu (API Level 33) and above.
 * `EXTRA_BATTERY_LOW` data point is available for Android version P (Pie) (API Level 28) and above.
+* The `EXTRA_*` values do not update between runs with the original Android Runner version. In order to have the values 
+  update as intended, the `device.unplug(restart)` line in [AndroidRunner/Experiment.py](../../Experiment.py), 
+  `prepare_device` function should be removed.
 ## Configuration
 The following is an example configuration that contains all the possible values for the `data_points` and 
 `persistency strategy` fields.
@@ -16,27 +19,12 @@ The following is an example configuration that contains all the possible values 
   ...
   "profilers": {
     "batterymanager": {
-      "sample_interval": 500,
+      "sample_interval": 1000,
       "data_points": [
-        "ACTION_CHARGING", "ACTION_DISCHARGING",
-        "BATTERY_HEALTH_COLD", "BATTERY_HEALTH_DEAD", "BATTERY_HEALTH_GOOD",
-        "BATTERY_HEALTH_OVERHEAT",
-        "BATTERY_HEALTH_OVER_VOLTAGE", "BATTERY_HEALTH_UNKNOWN",
-        "BATTERY_HEALTH_UNSPECIFIED_FAILURE",
-        "BATTERY_PLUGGED_AC", "BATTERY_PLUGGED_DOCK", "BATTERY_PLUGGED_USB",
-        "BATTERY_PLUGGED_WIRELESS",
-        "BATTERY_PROPERTY_CAPACITY", "BATTERY_PROPERTY_CHARGE_COUNTER",
-        "BATTERY_PROPERTY_CURRENT_AVERAGE",
-        "BATTERY_PROPERTY_CURRENT_NOW", "BATTERY_PROPERTY_ENERGY_COUNTER",
-        "BATTERY_PROPERTY_STATUS",
-        "BATTERY_STATUS_CHARGING", "BATTERY_STATUS_DISCHARGING", "BATTERY_STATUS_FULL",
-        "BATTERY_STATUS_NOT_CHARGING", "BATTERY_STATUS_UNKNOWN",
-        "EXTRA_BATTERY_LOW", "EXTRA_HEALTH", "EXTRA_ICON_SMALL", "EXTRA_LEVEL", "EXTRA_PLUGGED",
-        "EXTRA_PRESENT", "EXTRA_SCALE", "EXTRA_STATUS",
-        "EXTRA_TECHNOLOGY", "EXTRA_TEMPERATURE", "EXTRA_VOLTAGE"
+        "BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"
       ],
       "persistency_strategy": [
-        "csv", "adb_log"
+        "adb_log"
       ]
     }
   },
@@ -56,12 +44,15 @@ For further information on each of the data points, please refer to the
 
 **persistency_strategy** *Array<string>* 
 The persistency strategy that should be used. The available options are:
-* `csv` - stores the data in a CSV file on the device, then pulls the file from the device and stores it locally.
-* `adb_log` - uses the Android logs to extract the data from the companion app. 
+* `adb_log` - uses the Android logs to extract the data from the companion app.
+* `csv` - stores the data in a CSV file on the device, then pulls the file from the device and stores it on the computer.
+  ***Flaky on old devices!!***
 
 ## Limitations and Known Issues
-* The `EXTRA_*` values do not update between runs. We are working on a fix for this issue.
 * The companion app keeps everything in memory and then dumps it to a csv file. This means that if the user wants to use 
   memory as a dependent variable, they should not use the `csv` persistency strategy.
-* Very low `sample_interval` values causes the number of observations from the companion app to be inconsistent.
+* Very low `sample_interval` values causes the number of observations from the companion app to be inconsistent between 
+  runs.
+* Running the BatteryManager app, using the `csv` persistency strategy can crash on older devices. We recommend using 
+  `adb_log` strategy.  
 
