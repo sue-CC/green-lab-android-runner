@@ -54,5 +54,6 @@ The persistency strategy that should be used. The available options are:
 * Very low `sample_interval` values causes the number of observations from the companion app to be inconsistent between 
   runs.
 * Running the BatteryManager app, using the `csv` persistency strategy can crash on older devices. We recommend using 
-  `adb_log` strategy.  
+  `adb_log` strategy. On the topic of older devices, when testing with Android 8, extracting information from the logs 
+  introduces an incorrect line in the resulting csv file. Currently working on a solution.
 
