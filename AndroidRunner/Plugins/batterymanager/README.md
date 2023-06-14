@@ -8,7 +8,7 @@ This plugin uses the Android BatteryManager API to gather battery related data. 
   * [code](https://github.com/Raiduy/ar-batterymanager-script/) (https://github.com/Raiduy/ar-batterymanager-script/)
 * `BATTERY_PLUGGED_DOCK` data point is available for Android version Tiramisu (API Level 33) and above.
 * `EXTRA_BATTERY_LOW` data point is available for Android version P (Pie) (API Level 28) and above.
-* The `EXTRA_*` values do not update between runs with the original Android Runner version. In order to have the values 
+* The `EXTRA_*` values do not update between runs with the initial Android Runner version. In order to have the values 
   update as intended, the `device.unplug(restart)` line in [AndroidRunner/Experiment.py](../../Experiment.py), 
   `prepare_device` function should be removed.
 ## Configuration
@@ -46,14 +46,13 @@ For further information on each of the data points, please refer to the
 The persistency strategy that should be used. The available options are:
 * `adb_log` - uses the Android logs to extract the data from the companion app.
 * `csv` - stores the data in a CSV file on the device, then pulls the file from the device and stores it on the computer.
-  ***Flaky on old devices!!***
+  ***Flaky on old devices!! Fix needed in the companion app.***
 
 ## Limitations and Known Issues
 * The companion app keeps everything in memory and then dumps it to a csv file. This means that if the user wants to use 
   memory as a dependent variable, they should not use the `csv` persistency strategy.
 * Very low `sample_interval` values causes the number of observations from the companion app to be inconsistent between 
-  runs.
+  runs. (i.e., one run might have 1000 rows, next run could have 800, or 1200 rows).
 * Running the BatteryManager app, using the `csv` persistency strategy can crash on older devices. We recommend using 
-  `adb_log` strategy. On the topic of older devices, when testing with Android 8, extracting information from the logs 
-  introduces an incorrect line in the resulting csv file. Currently working on a solution.
+  `adb_log` strategy.
 

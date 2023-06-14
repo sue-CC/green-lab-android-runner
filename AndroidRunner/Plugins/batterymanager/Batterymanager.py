@@ -1,6 +1,7 @@
 import csv
 import os.path as op
 import time
+import re
 
 from AndroidRunner.Plugins.Profiler import Profiler
 
@@ -117,6 +118,23 @@ class Batterymanager(Profiler):
 
         return raw_header, raw_rows
 
+    @staticmethod
+    def preprocess_logcat(header, rows):
+        header = header.split('=> ')[1]
+        header = header.split('\n')[0]
+        header = header.split(',')
+
+        # FOR OLDER DEVICES remove all non-letter characters except _
+        header = [re.sub(r'[^a-zA-Z_]', '', h) for h in header]
+
+        rows = rows.split('\n')
+        # FOR OLDER DEVICES remove rows containing "
+        rows = [row for row in rows if '"' not in row]
+        rows = [row.split('=> ')[1].split(',') for row in rows]
+
+        rows.sort(key=lambda x: x[0])
+        return header, rows
+
     def write_logcat_csv(self, device, header, rows):
         header, rows = Batterymanager.preprocess_logcat(header, rows)
         logcat_csv_file = op.join(self.output_dir,
@@ -127,18 +145,6 @@ class Batterymanager(Profiler):
             csv_writer.writerow(header)
             for row in rows:
                 csv_writer.writerow(row)
-
-    @staticmethod
-    def preprocess_logcat(header, rows):
-        header = header.split('=> ')[1]
-        header = header
-        header = header.split(',')
-
-        rows = rows.split('\n')
-        rows = [row.split('=> ')[1].split(',') for row in rows]
-
-        rows.sort(key=lambda x: x[0])
-        return header, rows
 
     def unload(self, device):
         return
