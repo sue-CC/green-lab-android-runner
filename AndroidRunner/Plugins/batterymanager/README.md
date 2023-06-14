@@ -12,7 +12,7 @@ This plugin uses the Android BatteryManager API to gather battery related data. 
   update as intended, the `device.unplug(restart)` line in [AndroidRunner/Experiment.py](../../Experiment.py), 
   `prepare_device` function should be removed.
 ## Configuration
-The following is an example configuration that contains all the possible values for the `data_points` and 
+The following is an example configuration that contains possible values for the `data_points` and 
 `persistency strategy` fields.
 
 ```json

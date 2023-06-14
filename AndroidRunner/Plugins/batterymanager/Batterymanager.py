@@ -144,7 +144,7 @@ class Batterymanager(Profiler):
         return
 
     def dependencies(self):
-        return [] # ['com.example.batterymanager_utility']
+        return ['com.example.batterymanager_utility']
 
     def load(self, device):
         return
