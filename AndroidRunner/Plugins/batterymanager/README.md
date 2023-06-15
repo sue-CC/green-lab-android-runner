@@ -1,11 +1,11 @@
 # BatteryManager Plugin
 This plugin uses the Android BatteryManager API to gather battery related data. The plugin works using the 
-[BatteryManager companion app](https://github.com/Raiduy/ar-batterymanager-script/releases). 
+[BatteryManager companion app](https://github.com/S2-group/batterymanager-companion/releases). 
 
 ## Dependencies and Requirements
 * BatteryManager companion app has to be installed on the device with all permissions granted. 
-  * [apk](https://github.com/Raiduy/ar-batterymanager-script/releases) (https://github.com/Raiduy/ar-batterymanager-script/releases)
-  * [code](https://github.com/Raiduy/ar-batterymanager-script/) (https://github.com/Raiduy/ar-batterymanager-script/)
+  * [apk](https://github.com/S2-group/batterymanager-companion/releases) (https://github.com/S2-group/batterymanager-companion/releases)
+  * [code](https://github.com/S2-group/batterymanager-companion/) (https://github.com/S2-group/batterymanager-companion/)
 * `BATTERY_PLUGGED_DOCK` data point is available for Android version Tiramisu (API Level 33) and above.
 * `EXTRA_BATTERY_LOW` data point is available for Android version P (Pie) (API Level 28) and above.
 * The `EXTRA_*` values do not update between runs with the initial Android Runner version. In order to have the values 
