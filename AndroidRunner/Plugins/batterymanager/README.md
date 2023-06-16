@@ -19,6 +19,7 @@ The following is an example configuration that contains possible values for the 
   ...
   "profilers": {
     "batterymanager": {
+      "experiment_aggregation": "default",
       "sample_interval": 1000,
       "data_points": [
         "BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"
@@ -30,6 +31,20 @@ The following is an example configuration that contains possible values for the 
   },
   ...
 ```
+**experiment_aggregation** *string*
+Aggregates the results of each run of each app into one csv file (`Aggregated_Results_Batterymanager.csv`).
+Column descriptions 
+* `device` name of the device.
+* `subject` name of the application.
+* `run` run number of the application in the experiment.
+* `UPPERCASE_COLUMN_NAMES` contain the average of the matching column name that was specified in the config for that 
+  particular run.
+* If the *config.json* contains both `BATTERY_PROPERTY_CURRENT_NOW` and `EXTRA_VOLTAGE` fields, then the following columns will
+  also be created:
+  * `Energy trapz (J)` energy consumption of the run computed with the trapezoid method.
+  * `Energy simple (J)` energy consumption of the run computed simply by multiplying the average power by time.
+  * `Avg power (W)` average power consumption of the run.
+
 **sample_interval** *int* 
 How often the data should be gathered in milliseconds. (can be equal to 0, in which case the companion app will record 
 continuously, see Limitations and Known Issues section for more information on recording continuously).
