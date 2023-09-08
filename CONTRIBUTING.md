@@ -34,7 +34,7 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
     1. Select your platform below:
         ### Linux
         #### Ubuntu 22.04 (command-line only)
-        - Install JDK 8 `sudo apt install openjdk-8-jre`.
+        - Install JDK 11 `sudo apt install openjdk-11-jre`.
         - Download the`sdkmanager` from the latest "command line tools only" package available [here](https://developer.android.com/studio) and unzip the package to your `$HOME` directory.
         - Create a directory called `android-sdk` in your `$HOME` directory and move the unzipped `cmdline-tools` directory there.
         - In the directory `cmdline-tools` create a sub-directory called `latest`.
@@ -56,7 +56,7 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
         #### Ubuntu 18.04
         - Android Debug Bridge (`sudo apt install android-tools-adb`)
         - Android SDK Tools (`sudo apt install monkeyrunner`)
-        - JDK 8 (NOT JDK 9) (`sudo apt install openjdk-8-jre`)
+        - JDK 11 (`sudo apt install openjdk-11-jre`)
             - See [this](https://askubuntu.com/questions/740757/switch-between-multiple-java-versions) for switching between java versions
         - lxml (`sudo apt install python-lxml`)
         #### Other
@@ -71,7 +71,7 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
             export PATH=$PATH:$ANDROID_HOME/platform-tools
             ```
         - Reload your `.bashrc` or `.zshrc` settings by running `source ~/.bashrc` or `source ~/.zshrc`
-        - Since MonkeyRunner requires JDK 8 (not JDK 9) we need to install JDK 8: `sudo apt install openjdk-8-jre`.
+        - Since MonkeyRunner requires JDK 8 (not JDK 9) we need to install JDK 11: `sudo apt install openjdk-11-jre`.
             - Once JDK 8 is installed we need to actually set it as default. See [here](https://askubuntu.com/questions/740757/switch-between-multiple-java-versions) how to do that.
         - To verify if everything works correctly run `adb --version`. This should return its version number and install location. To do the same for Monkey Runner run `monkeyrunner --version`. This should return a `Unrecognized argument: --version.` but no other errors.
         - Install lxml using `sudo apt install python-lxml`.
