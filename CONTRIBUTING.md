@@ -34,7 +34,7 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
     1. Select your platform below:
         ### Linux
         #### Ubuntu 22.04 (command-line only)
-        - Install JDK 8 `sudo apt install openjdk-8-jre`.
+        - Install JDK 11 `sudo apt install openjdk-11-jre`.
         - Download the`sdkmanager` from the latest "command line tools only" package available [here](https://developer.android.com/studio) and unzip the package to your `$HOME` directory.
         - Create a directory called `android-sdk` in your `$HOME` directory and move the unzipped `cmdline-tools` directory there.
         - In the directory `cmdline-tools` create a sub-directory called `latest`.
@@ -56,7 +56,7 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
         #### Ubuntu 18.04
         - Android Debug Bridge (`sudo apt install android-tools-adb`)
         - Android SDK Tools (`sudo apt install monkeyrunner`)
-        - JDK 8 (NOT JDK 9) (`sudo apt install openjdk-8-jre`)
+        - JDK 11 (`sudo apt install openjdk-11-jre`)
             - See [this](https://askubuntu.com/questions/740757/switch-between-multiple-java-versions) for switching between java versions
         - lxml (`sudo apt install python-lxml`)
         #### Other
@@ -77,7 +77,7 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
         - Install lxml using `sudo apt install python-lxml`.
         ### macOS
         - Make sure you have <a href="https://brew.sh/">Homebrew</a> installed
-        - `brew cask install homebrew/cask-versions/adoptopenjdk8 android-sdk android-platform-tools`
+        - `brew install --cask homebrew/cask-versions/adoptopenjdk8 android-sdk android-platform-tools`
         - `brew install libxml2`
         - Run `java -version`, if you are running a different version than 1.8/8:
         - `brew install jenv`

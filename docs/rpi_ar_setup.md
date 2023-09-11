@@ -52,8 +52,8 @@ Next we will install all the required software that are necessary to run AR (we 
 1. Install Android Debug Bridge (ADB): `sudo apt install android-tools-adb`
 2. Install the Android SDK: `sudo apt install android-sdk`
 3. Install MonkeyRunner: `sudo apt install monkeyrunner`
-4. Install JDK8: `sudo apt install openjdk-8-jre`
-5. Then set Java 8 as the default Java version by following the commands shown [here](https://askubuntu.com/questions/740757/switch-between-multiple-java-versions).
+4. Install JDK11: `sudo apt install openjdk-11-jre`
+5. Then set Java 11 as the default Java version by following the commands shown [here](https://askubuntu.com/questions/740757/switch-between-multiple-java-versions).
 6. Install ubhubctl: `sudo apt install uhubctl`
 7. Install Python LXML: `sudo apt install python-lxml`
 8. Install tmux, not necessary perse but its very handy when running AR experiments headless: `sudo apt install tmux`
