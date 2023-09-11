@@ -71,13 +71,13 @@ Current and former contributors have used Ubuntu 18.04 and Ubuntu 20.04 along wi
             export PATH=$PATH:$ANDROID_HOME/platform-tools
             ```
         - Reload your `.bashrc` or `.zshrc` settings by running `source ~/.bashrc` or `source ~/.zshrc`
-        - Since MonkeyRunner requires JDK 8 (not JDK 9) we need to install JDK 11: `sudo apt install openjdk-11-jre`.
+        - Since MonkeyRunner requires JDK 8 (not JDK 9) we need to install JDK 8: `sudo apt install openjdk-8-jre`.
             - Once JDK 8 is installed we need to actually set it as default. See [here](https://askubuntu.com/questions/740757/switch-between-multiple-java-versions) how to do that.
         - To verify if everything works correctly run `adb --version`. This should return its version number and install location. To do the same for Monkey Runner run `monkeyrunner --version`. This should return a `Unrecognized argument: --version.` but no other errors.
         - Install lxml using `sudo apt install python-lxml`.
         ### macOS
         - Make sure you have <a href="https://brew.sh/">Homebrew</a> installed
-        - `brew cask install homebrew/cask-versions/adoptopenjdk8 android-sdk android-platform-tools`
+        - `brew install --cask homebrew/cask-versions/adoptopenjdk8 android-sdk android-platform-tools`
         - `brew install libxml2`
         - Run `java -version`, if you are running a different version than 1.8/8:
         - `brew install jenv`
