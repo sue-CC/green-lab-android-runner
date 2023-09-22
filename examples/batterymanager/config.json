@@ -1,7 +1,7 @@
 {
   "type": "native",
   "devices": {
-    "GalaxyJ7-W": {}
+    "reno6pro+5g": {}
   },
   "repetitions": 2,
   "apps": [

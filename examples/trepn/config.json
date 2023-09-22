@@ -1,12 +1,13 @@
 {
   "type": "native",
+  "devices_spec": "devices.json",
   "devices": {
-    "j7duo2": {}
+    "reno6pro+5g": {}
   },
   "repetitions": 1,
   "duration": 5000,
   "apps": [
-    "com.samsung.android.messaging"
+    "org.mozilla.firefox"
   ],
   "profilers": {
     "trepn": {

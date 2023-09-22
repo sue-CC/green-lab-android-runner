@@ -1,7 +1,7 @@
 {
   "type": "native",
   "devices": {
-    "j7duo2": {}
+    "reno6pro+5g": {}
   },
   "repetitions": 3,
   "duration": 60000,
