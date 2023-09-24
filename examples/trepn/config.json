@@ -7,6 +7,7 @@
   "repetitions": 1,
   "duration": 5000,
   "apps": [
+    "com.android.chrome",
     "org.mozilla.firefox"
   ],
   "profilers": {
@@ -15,7 +16,7 @@
       "experiment_aggregation": "Scripts/aggregate_trepn.py",
       "preferences": {
         "profiling_interval": 100,
-        "battery_power_source_selection": "Direct Power"
+        "battery_power_source_selection": "Auto-Select"
       },
       "data_points": [
         "battery_power"
