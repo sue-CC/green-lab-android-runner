@@ -1,0 +1,22 @@
+{
+    "api_id": 24131209,
+    "api_hash": "182c613f255b322d5bd770c967b1ec5a",
+    "session_name": "new_session",
+    "receiver": "clytze123",
+    "nr_of_messages": 5,
+    "send_interval": 1,
+    "repetition": 2,
+    "repetition_interval": 10,
+    "messages": [
+        "testing!",
+        "An apple a day keeps the doctor away.",
+        "What do we have for lunch?",
+        "hello, hello?",
+        "Have a great day!",
+        "experiment 1",
+        "Greetings!",
+        "Nice to meet you!",
+        "Welcome!",
+        "Cheers!"
+    ]
+}
