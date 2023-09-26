@@ -32,8 +32,9 @@ client = TelegramClient(session_name, api_id, api_hash).start()
 
 def send_message():
     message = random.choice(messages)
+    message = "[" + time.strftime(" at %H:%M:%S", time.localtime()) + "] " + message
     client.send_message(receiver, message)
-    print("[" + time.strftime(" at %H:%M:%S", time.localtime()) + "] "+ 'Message sent: ' + message )
+    print( message )
 
 def auto_sending():
     for _ in range(nr_of_messages):
@@ -42,12 +43,13 @@ def auto_sending():
 
 def repeat_auto_sending():
      for _ in range(repetition):
-        print("repetition: " + str(_ + 1))
+        print("\033[93m {}\033[00m" .format("repetition: " + str(_ + 1)))
+        # print("repetition: " + str(_ + 1))
         auto_sending()
         time.sleep(repetition_interval)
 
 def main():
-    print("sending messages to " + receiver)
+    print("sending messages to ====> " + receiver)
     repeat_auto_sending()
 
 if __name__ == "__main__":
