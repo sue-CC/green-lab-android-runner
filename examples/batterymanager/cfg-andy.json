@@ -1,8 +1,8 @@
 {
   "type": "native",
   "usb_handler": {
-    "enable_command": "uhubctl -l 2 -a 1",
-    "disable_command": "uhubctl -l 2 -a 0"
+    "enable_command": "uhubctl -l 1 -a 1",
+    "disable_command": "uhubctl -l 1 -a 0"
   },
   "devices": {
     "pixel5g-wifid": {}
