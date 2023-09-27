@@ -1,6 +1,9 @@
 {
   "type": "native",
-  "adb_path": "/home/andy/android-sdk/platform-tools/adb",
+  "usb_handler": {
+    "enable_command": "uhubctl -l 2 -a 1",
+    "disable_command": "uhubctl -l 2 -a 0"
+  },
   "devices": {
     "pixel5g-wifid": {}
   },
@@ -15,7 +18,8 @@
       "experiment_aggregation": "default",
       "sample_interval": 100,
       "data_points": [
-        "BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"
+        "BATTERY_PROPERTY_CURRENT_NOW",
+        "EXTRA_VOLTAGE"
       ],
       "persistency_strategy": [
         "adb_log"
