@@ -1,5 +1,6 @@
 {
     "type": "native",
+    "adb_path": "/home/andy/android-sdk/platform-tools/adb",
     "devices": {
         "pixel5g-wifid": {}
     },
