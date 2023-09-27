@@ -2,7 +2,7 @@
   "type": "native",
   "adb_path": "/home/andy/android-sdk/platform-tools/adb",
   "devices": {
-    "reno6pro+5g": {}
+    "pixel5g-wifid": {}
   },
   "repetitions": 2,
   "apps": [

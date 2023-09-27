@@ -3,7 +3,7 @@
   "adb_path": "/home/andy/android-sdk/platform-tools/adb",
   "devices_spec": "devices.json",
   "devices": {
-    "reno6pro+5g": {}
+    "pixel5g": {}
   },
   "repetitions": 1,
   "duration": 5000,
