@@ -11,7 +11,7 @@
     ],
     "profilers": {
         "perfetto": {
-            "config_file": "cfg-andy.pbtx",
+            "config_file": "examples/perfetto/cfg-andy.pbtx",
             "config_file_format": "text"
         }
     },
