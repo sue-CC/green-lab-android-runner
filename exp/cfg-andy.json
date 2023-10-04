@@ -9,7 +9,7 @@
   },
   "repetitions": 5,
   "browsers": [
-    "chrome"
+    "firefox"
   ],
   "paths": [
     "https://web.telegram.org"
