@@ -32,6 +32,7 @@
     "before_experiment": "before_experiment.py",
     "before_run": "before_run.py",
     "after_launch": "after_launch.py",
+    "interaction": "interaction.py",
     "before_close": "before_close.py",
     "after_run": "after_run.py",
     "after_experiment": "after_experiment.py"
