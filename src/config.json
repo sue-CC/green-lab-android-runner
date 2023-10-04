@@ -4,9 +4,10 @@
     "session_name": "new_session",
     "receiver": "SeismoLau",
     "nr_of_messages": 5,
-    "send_interval": 1,
-    "repetition": 2,
-    "repetition_interval": 10,
+    "sending_window": 100,
+    "setup_time": 10,
+    "repetition": 10,
+    "repetition_interval": 11,
     "messages": [
         "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
         "The only way to do great work is to love what you do. - Steve Jobs",

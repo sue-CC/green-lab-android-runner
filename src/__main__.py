@@ -19,7 +19,8 @@ with open('config.json', 'r') as json_file:
         receiver = data["receiver"]
         messages = data["messages"]
         nr_of_messages = data["nr_of_messages"]
-        send_interval = data["send_interval"]
+        sending_window = data["sending_window"]
+        setup_time = data["setup_time"]
         repetition = data["repetition"]
         repetition_interval = data["repetition_interval"]
 
@@ -39,9 +40,11 @@ def send_message():
 def auto_sending():
     for _ in range(nr_of_messages):
         send_message()
+        send_interval = sending_window / nr_of_messages
         time.sleep(send_interval)
 
 def repeat_auto_sending():
+     time.sleep(setup_time)
      for _ in range(repetition):
         print("\033[93m {}\033[00m" .format("repetition: " + str(_ + 1)))
         # print("repetition: " + str(_ + 1))
