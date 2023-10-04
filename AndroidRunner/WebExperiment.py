@@ -82,4 +82,4 @@ class WebExperiment(Experiment):
     def cleanup(self, device):
         super(WebExperiment, self).cleanup(device)
         for browser in self.browsers:
-            browser.stop(device, clear_data=True)
+            browser.stop(device, clear_cache=True)

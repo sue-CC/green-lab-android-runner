@@ -19,11 +19,13 @@ class Browser(ABC):
         device.launch_activity(self.package_name, self.main_activity, data_uri=url,
                                action='android.intent.action.VIEW')
 
-    def stop(self, device, clear_data=False):
+    def stop(self, device, clear_data=False, clear_cache=False):
         self.logger.info('%s: Stop' % device.id)
         device.force_stop(self.package_name)
         if clear_data:
             device.clear_app_data(self.package_name)
+        elif clear_cache:
+            device.clear_app_data(self.package_name, cache_only=True)
 
     def to_string(self):
         return self.package_name

@@ -203,9 +203,9 @@ class Device:
         """Force stop an app by package name"""
         Adb.shell(self.id, 'am force-stop %s' % name)
 
-    def clear_app_data(self, name):
+    def clear_app_data(self, name, cache_only=False):
         """Clears the data of an app by package name"""
-        Adb.clear_app_data(self.id, name)
+        Adb.clear_app_data(self.id, name, cache_only)
 
     def logcat_to_file(self, path):
         """Dumps the last x lines of logcat into a file specified by path"""
