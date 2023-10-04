@@ -7,10 +7,9 @@
   "devices": {
     "pixel5g-wifid": {}
   },
-  "repetitions": 2,
+  "repetitions": 30,
   "apps": [
-    "com.android.chrome",
-    "org.mozilla.firefox"
+    "com.android.chrome"
   ],
   "duration": 5000,
   "profilers": {
