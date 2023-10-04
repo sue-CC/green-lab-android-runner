@@ -1,4 +1,5 @@
 import json
+import os.path
 import random
 import time
 from telethon import TelegramClient, sync
@@ -11,7 +12,7 @@ from telethon import TelegramClient, sync
 # clytze123
 # joeyyyy12
 
-with open('config.json', 'r') as json_file:
+with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as json_file:
         data = json.load(json_file)
         api_id = data["api_id"]
         api_hash = data["api_hash"]
