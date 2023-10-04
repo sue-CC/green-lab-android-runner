@@ -1,3 +1,4 @@
-import telethon
+from .telethon import *
 
-telethon.__main__.main()
+__main__.main()
+
