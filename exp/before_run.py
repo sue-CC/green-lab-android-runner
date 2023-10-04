@@ -1,3 +1,4 @@
 import telethon.__main__
 
-telethon.__main__.main()
+def main(device, *args, **kwargs):
+    telethon.__main__.main()
