@@ -9,10 +9,10 @@
   },
   "repetitions": 5,
   "browsers": [
-    "firefox"
+    "chrome"
   ],
   "paths": [
-    "https://web.telegram.org"
+    "https://www.google.com"
   ],
   "duration": 120000,
   "profilers": {
