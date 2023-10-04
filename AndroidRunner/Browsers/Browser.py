@@ -1,6 +1,7 @@
 import logging
 from abc import ABC
 
+
 class Browser(ABC):
 
     # noinspection PyUnusedLocal
@@ -19,7 +20,7 @@ class Browser(ABC):
         device.launch_activity(self.package_name, self.main_activity, data_uri=url,
                                action='android.intent.action.VIEW')
 
-    def stop(self, device, clear_data=False, clear_cache=False):
+    def stop(self, device, clear_data: bool = False, clear_cache: bool = False):
         self.logger.info('%s: Stop' % device.id)
         device.force_stop(self.package_name)
         if clear_data:

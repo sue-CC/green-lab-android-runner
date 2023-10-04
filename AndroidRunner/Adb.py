@@ -22,13 +22,15 @@ class ConnectionError(Exception):
 
 adb = None
 
-settings_options = {"location_high_accuracy": ("settings put secure location_providers_allowed -gps,network","settings put secure location_providers_allowed +gps,network"),
-                    "location_gps_only": ("settings put secure location_providers_allowed -gps","settings put secure location_providers_allowed +gps")
+settings_options = {"location_high_accuracy": ("settings put secure location_providers_allowed -gps,network", "settings put secure location_providers_allowed +gps,network"),
+                    "location_gps_only": ("settings put secure location_providers_allowed -gps", "settings put secure location_providers_allowed +gps")
                     }
+
 
 def configure_settings(device_id, setting, enable):
     cmd = settings_options[setting][enable]
     return shell(device_id, cmd)
+
 
 # noinspection PyProtectedMember
 def setup(path='adb'):
@@ -105,10 +107,10 @@ def install(device_id, apk, replace=True, all_permissions=True):
         # arguments of install-multiple
         apk = ' '.join(apk_files_paths)
         logger.info('installing APKs %s' % apk)
-        os.chdir(android_runner_dir) # go back to android runner dir
+        os.chdir(android_runner_dir)  # go back to android runner dir
     else:
         cmd = ['install']
-        
+
     if replace:
         cmd += ['-r']
     if all_permissions:
@@ -133,7 +135,7 @@ def uninstall(device_id, name, keep_data=False):
                          )
 
 
-def clear_app_data(device_id, name, cache_only=False):
+def clear_app_data(device_id: str, name: str, cache_only: bool = False):
     adb.set_target_by_name(device_id)
     success_or_exception(adb.shell_command(f'pm clear {name}' + (' --cache-only' if cache_only else '')),
                          '%s: Data of "%s" cleared' % (device_id, name),
@@ -172,6 +174,7 @@ def pull(device_id, remote, local):
         adb._ADB__error = None
     return adb._ADB__output
 
+
 def logcat(device_id, regex=None):
     """Returns the logcat log for the given device.
 
@@ -199,6 +202,7 @@ def logcat(device_id, regex=None):
         params += f' | grep "{regex}"'
     res = shell(device_id, params)
     return res
+
 
 def reset(cmd):
     if cmd:

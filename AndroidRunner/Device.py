@@ -12,8 +12,8 @@ import subprocess
 
 class Device:
     LOGCAT_BUFFER_SIZE_MIN = 64
-    LOGCAT_BUFFER_SIZE_MAX = 262144 # 256MB = 256 * 1024KB = 262144KB
-    LOGCAT_BUFFER_SIZE_DEFAULT = 57344 # 56MB = 56 * 1024KB = 57344KB since Nexus 5X has limit of 56MB.
+    LOGCAT_BUFFER_SIZE_MAX = 262144  # 256MB = 256 * 1024KB = 262144KB
+    LOGCAT_BUFFER_SIZE_DEFAULT = 57344  # 56MB = 56 * 1024KB = 57344KB since Nexus 5X has limit of 56MB.
 
     def __init__(self, name, device_id, settings):
         self.logger = logging.getLogger(self.__class__.__name__)
@@ -164,7 +164,7 @@ class Device:
 
     def current_activity(self):
         """Newer Android 10 does not have mCurrentFocus and mFocusedApp. Different approach to get the current activity"""
-        recent_activity = Adb.shell(self.id,'dumpsys activity recents | grep "Recent #0" | cut -d "=" -f2 | grep -o -p "[a-z|.]*"')
+        recent_activity = Adb.shell(self.id, 'dumpsys activity recents | grep "Recent #0" | cut -d "=" -f2 | grep -o -p "[a-z|.]*"')
 
         if recent_activity:
             result = recent_activity
@@ -203,7 +203,7 @@ class Device:
         """Force stop an app by package name"""
         Adb.shell(self.id, 'am force-stop %s' % name)
 
-    def clear_app_data(self, name, cache_only=False):
+    def clear_app_data(self, name: str, cache_only: bool = False):
         """Clears the data of an app by package name"""
         Adb.clear_app_data(self.id, name, cache_only)
 
