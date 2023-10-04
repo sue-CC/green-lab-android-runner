@@ -137,7 +137,7 @@ def uninstall(device_id, name, keep_data=False):
 
 def clear_app_data(device_id: str, name: str, cache_only: bool = False):
     adb.set_target_by_name(device_id)
-    success_or_exception(adb.shell_command(f'pm clear {name}' + (' --cache-only' if cache_only else '')),
+    success_or_exception(adb.shell_command(f'pm clear' + (' --cache-only' if cache_only else '') + f' {name}'),
                          '%s: Data of "%s" cleared' % (device_id, name),
                          '%s: Failed to clear data for "%s"' % (device_id, name)
                          )
