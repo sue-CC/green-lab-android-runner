@@ -62,10 +62,11 @@ class WebExperiment(Experiment):
         super(WebExperiment, self).before_run(device, path, run, *args, **kwargs)
         device.shell('logcat -c')
         kwargs['browser'].start(device)
+        kwargs['browser'].load_url(device, path)
         time.sleep(5)
 
     def interaction(self, device, path, run, *args, **kwargs):
-        kwargs['browser'].load_url(device, path)
+        # kwargs['browser'].load_url(device, path)
         time.sleep(5)
         super(WebExperiment, self).interaction(device, path, run, *args, **kwargs)
         # TODO: Fix web experiments running longer than self.duration
