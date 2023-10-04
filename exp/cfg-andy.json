@@ -12,7 +12,7 @@
     "chrome"
   ],
   "paths": [
-    "web.telegram.org"
+    "https://web.telegram.org"
   ],
   "duration": 120000,
   "profilers": {
