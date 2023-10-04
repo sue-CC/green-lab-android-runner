@@ -1,5 +1,5 @@
 {
-  "type": "native",
+  "type": "web",
   "usb_handler": {
     "enable_command": "uhubctl -l 1-1.1 -a 1",
     "disable_command": "uhubctl -l 1-1.1 -a 0"
@@ -8,8 +8,11 @@
     "pixel5g-wifid": {}
   },
   "repetitions": 5,
-  "apps": [
-    "com.android.chrome"
+  "browsers": [
+    "chrome"
+  ],
+  "paths": [
+    "web.telegram.org/a/"
   ],
   "duration": 120000,
   "profilers": {
