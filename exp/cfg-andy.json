@@ -9,7 +9,7 @@
   },
   "repetitions": 5,
   "apps": [
-    "com.android.chrome"
+    "org.mozilla.firefox"
   ],
   "duration": 120000,
   "profilers": {
