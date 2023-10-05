@@ -45,7 +45,7 @@ def auto_sending():
 
 def repeat_auto_sending():
     time.sleep(setup_time)
-    print("\033[93m {}\033[00m" .format("repetition: " + str(_ + 1)))
+    # print("\033[93m {}\033[00m" .format("repetition: " + str(_ + 1)))
     # print("repetition: " + str(_ + 1))
     auto_sending()
     time.sleep(receiving_buffer)
