@@ -211,7 +211,8 @@ class Batterymanager(Profiler):
 
             runs = pd.concat([runs, pd.DataFrame(stats, index=[0])], ignore_index=True)
 
-        runs = runs.drop(columns=['Timestamp', 'power'], axis=1)
+        # runs = runs.drop(columns=['Timestamp', 'power'], axis=1)
+        runs = runs.drop(columns=['power'], axis=1)
         return runs
 
     @staticmethod
