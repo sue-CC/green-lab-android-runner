@@ -23,6 +23,7 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as j
         sending_window = data["sending_window"]
         setup_time = data["setup_time"]
         receiving_buffer = data["receiving_buffer"]
+        burst = data["burst"]
 
 
 client = TelegramClient(session_name, api_id, api_hash).start()
@@ -38,9 +39,12 @@ def send_message():
     print( message )
 
 def auto_sending():
+    if burst:
+        send_interval = 0.5
+    else: 
+        send_interval = sending_window / nr_of_messages
     for _ in range(nr_of_messages):
         send_message()
-        send_interval = sending_window / nr_of_messages
         time.sleep(send_interval)
 
 def repeat_auto_sending():
@@ -48,7 +52,7 @@ def repeat_auto_sending():
     # print("\033[93m {}\033[00m" .format("repetition: " + str(_ + 1)))
     # print("repetition: " + str(_ + 1))
     auto_sending()
-    time.sleep(receiving_buffer)
+    # time.sleep(receiving_buffer)
 
 def main():
     print("sending messages to ====> " + receiver)
