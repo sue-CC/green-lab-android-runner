@@ -1,13 +1,17 @@
 {
   "type": "native",
+  "usb_handler": {
+    "enable_command": "uhubctl -l 1-1.1 -a 1",
+    "disable_command": "uhubctl -l 1-1.1 -a 0"
+  },
   "devices": {
     "pixel5g-wifid": {}
   },
-  "repetitions": 30,
+  "repetitions": 5,
   "apps": [
-    "com.android.chrome"
+    "org.mozilla.firefox"
   ],
-  "duration": 5000,
+  "duration": 120000,
   "profilers": {
     "batterymanager": {
       "experiment_aggregation": "default",
@@ -25,6 +29,7 @@
     "before_experiment": "before_experiment.py",
     "before_run": "before_run.py",
     "after_launch": "after_launch.py",
+    "interaction": "interaction.py",
     "before_close": "before_close.py",
     "after_run": "after_run.py",
     "after_experiment": "after_experiment.py"
