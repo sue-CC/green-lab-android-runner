@@ -28,14 +28,14 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as j
     session_name = data["session_name"]
     receiver = data["receiver"]
     messages = data["messages"]
-    nr_of_messages: int = data["nr_of_messages"]
+    nr_of_messages = data["nr_of_messages"]
     sending_window = data["sending_window"]
     setup_time = data["setup_time"]
     receiving_buffer = data["receiving_buffer"]
-    burst: bool = data["burst"]
+    burst = data["burst"]
     # command-line arguments override the corresponding entries in config.json
     try:
-        nr_of_messages = arg.nr_of_messages
+        nr_of_messages = int(arg.nr_of_messages)
     except AttributeError as e:
         pass
     try:
