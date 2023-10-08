@@ -53,6 +53,9 @@ def parse_arguments(args):
     parser = argparse.ArgumentParser()
     parser.add_argument('file')
     parser.add_argument('--progress', default=argparse.SUPPRESS)
+    # for exp/telethon/__main__.py
+    parser.add_argument('--nr_of_messages', action='store')
+    parser.add_argument('--burst', action='store_true')
     return vars(parser.parse_args(args))
 
 
