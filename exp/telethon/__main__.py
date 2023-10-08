@@ -15,6 +15,10 @@ import argparse
 
 with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as json_file:
     parser = argparse.ArgumentParser()
+    # for the initial py script
+    parser.add_argument('file')
+    parser.add_argument('--progress', action='store')
+    # for this py script
     parser.add_argument('--nr_of_messages', action='store')
     parser.add_argument('--burst', action='store_true')
     arg: argparse.Namespace = parser.parse_args()
