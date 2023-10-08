@@ -62,7 +62,7 @@ def auto_sending():
         time.sleep(sending_window)
     else:
         if burst:
-            send_interval = 0.2
+            send_interval = 0.5
         else:
             send_interval = sending_window / nr_of_messages
         for _ in range(nr_of_messages):
