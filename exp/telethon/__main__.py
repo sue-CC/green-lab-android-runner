@@ -36,11 +36,11 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as j
     # command-line arguments override the corresponding entries in config.json
     try:
         nr_of_messages = int(arg.nr_of_messages)
-    except AttributeError as e:
+    except:
         pass
     try:
         burst = arg.burst
-    except AttributeError as e:
+    except:
         pass
 
 client = TelegramClient(session_name, api_id, api_hash).start()
