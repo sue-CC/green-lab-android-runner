@@ -1,6 +1,3 @@
-python-slugify
-pluginbase
-lxml
-psutil
 pandas
 numpy
+matplotlib
