@@ -11,7 +11,7 @@
   "apps": [
     "org.mozilla.firefox"
   ],
-  "duration": 120000,
+  "duration": 0,
   "profilers": {
     "batterymanager": {
       "experiment_aggregation": "default",

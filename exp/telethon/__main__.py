@@ -75,7 +75,7 @@ def repeat_auto_sending():
     # print("\033[93m {}\033[00m" .format("repetition: " + str(_ + 1)))
     # print("repetition: " + str(_ + 1))
     auto_sending()
-    # time.sleep(receiving_buffer)
+    time.sleep(receiving_buffer)
 
 
 def main():
