@@ -68,6 +68,8 @@ def auto_sending():
         for _ in range(nr_of_messages):
             send_message()
             time.sleep(send_interval)
+        if burst:
+            time.sleep(sending_window - send_interval * nr_of_messages)  # make burst / even message sending consume the same time period
 
 
 def repeat_auto_sending():
