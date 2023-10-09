@@ -5,7 +5,7 @@
     "receiver": "Andy_Bayer_Roswell",
     "nr_of_messages": 50,
     "sending_window": 100,
-    "burst": true,
+    "burst": false,
     "setup_time": 10,
     "receiving_buffer": 10,
     "messages": [
