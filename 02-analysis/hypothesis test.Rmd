@@ -1,0 +1,94 @@
+---
+title: "Hypothesis test"
+output: pdf_document
+date: "2023-10-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Green Lab
+
+
+**Import data**
+
+```{r}
+data0 = read.table("/Users/suecai/Desktop/Green Lab/combined.txt", header = TRUE)
+head(data0)
+```
+*Prepare data*
+
+```{r echo=FALSE}
+chrome_off = data0[data0$browser == "chrome"&data0$notification_status == "off",]
+chrome_on = data0[data0$browser == "chrome"&data0$notification_status == "on",]
+firefox_off = data0[data0$browser == "firefox"&data0$notification_status == "off",]
+firefox_on = data0[data0$browser == "firefox"&data0$notification_status == "on",]
+```
+
+**RQ-1: Notification status**
+
+*Normality check*
+
+For chrome:
+
+```{r}
+par(mfrow=c(1,2)) # two plots in one row next to each other
+hist(chrome_on$Energy_trapz.J., main = "Histogram of chrome-on" )
+qqnorm(chrome_on$Energy_trapz.J.,  main = "Q-Q plot of chrome-on")
+shapiro.test(chrome_on$Energy_trapz.J.) # check the data normality of differences of notification on 
+hist(chrome_off$Energy_trapz.J. , main = "Histogram of chrome-off")
+qqnorm(chrome_off$Energy_trapz.J., , main = "Q-Q plot of chrome-off")
+shapiro.test(chrome_off$Energy_trapz.J.) # check the data normality of differences of notification on 
+```
+
+For firefox:
+
+```{r}
+par(mfrow=c(1,2)) # two plots in one row next to each other
+hist(firefox_on$Energy_trapz.J., main = "Histogram of firefox-on" )
+qqnorm(firefox_on$Energy_trapz.J.,  main = "Q-Q plot of firefox-on")
+shapiro.test(firefox_on$Energy_trapz.J.) # check the data normality when notification is on under Firefox
+hist(firefox_off$Energy_trapz.J. , main = "Histogram of firefox-off")
+qqnorm(firefox_off$Energy_trapz.J., , main = "Q-Q plot of firefox-off")
+shapiro.test(firefox_off$Energy_trapz.J.) # check the data normality when notification off under Firefox
+```
+
+Data is not normal, hence use Wilcoxon Signed-Rank Test to conduct the hypothesis test, because these two data sets are paired.
+
+*Hypothesis test*
+
+```{r}
+wilcox.test(chrome_off$Energy_trapz.J., chrome_on$Energy_trapz.J., paired = TRUE, alternative = "less") # chrome
+wilcox.test(firefox_off$Energy_trapz.J., firefox_on$Energy_trapz.J., paired = TRUE, alternative = "less") # Firefox
+```
+
+P-values are less than $0.05$, then reject $H_0$ which means the energy consumption is greater when the notification is on.
+
+**RQ1-1: Impact of Browsers**
+
+*Normality check*
+
+```{r}
+dif_chr = chrome_on$Energy_trapz.J. - chrome_off$Energy_trapz.J. 
+dif_fire = firefox_on$Energy_trapz.J. - firefox_off$Energy_trapz.J. # Calculation of the increase in energy consumption due to switching on notifications
+par(mfrow=c(1,2)) # two plots in one row next to each other
+hist(dif_chr, main = "Histogram of increasing energy in chrome" )
+qqnorm(dif_chr,  main = "Q-Q plot of increasing energy in chrome")
+shapiro.test(dif_chr) 
+hist(dif_fire, main = "Histogram of increasing energy in Firefox")
+qqnorm(dif_fire , main = "Q-Q plot of increasing energy in Firefox")
+shapiro.test(dif_fire) 
+```
+
+Data is not normal distributed. Hence use Mann-Whitney U Test, because these two data sets are independent.
+
+*Hypothesis test*
+
+```{r}
+wilcox.test(dif_chr, dif_fire)
+```
+
+P-value is less than $0.05$, then reject null hypothesis. Namely, there is a difference is the energy consumption resulted by the activated push API when using different browsers.
+
+**RQ2: Impact of distribution patterns**
