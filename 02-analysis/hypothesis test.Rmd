@@ -92,3 +92,50 @@ wilcox.test(dif_chr, dif_fire)
 P-value is less than $0.05$, then reject null hypothesis. Namely, there is a difference is the energy consumption resulted by the activated push API when using different browsers.
 
 **RQ2: Impact of distribution patterns**
+
+In this section, we exclusively focus on scenarios in which notifications are enabled. This decision aligns with our research question, which focuses on evaluating the impacts of different distribution patterns. Furthermore, drawing from the findings in RQ1-1, we've established that there are disparities in energy consumption across different web browsers. Consequently, we will proceed to perform hypothesis tests for RQ2, with separate analyses for each web browser.
+
+*Prepare data*
+
+```{r}
+chrome_on2 = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency != "idle",]
+firefox_on2 = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency != "idle",]
+```
+
+*Hypothesis test*
+
+Regarding chrome:
+
+```{r}
+par(mfrow=c(1,2))
+boxplot(chrome_on$Energy_trapz.J. ~ chrome_on$frequency)
+boxplot(chrome_on2$Energy_trapz.J. ~ chrome_on2$distribution)
+```
+
+```{r}
+chrome_on2$frequency = as.factor(chrome_on2$frequency)
+chrome_on2$distribution = as.factor(chrome_on2$distribution)
+rq2chrome_model0 = lm(chrome_on2$Energy_trapz.J. ~ chrome_on2$frequency * chrome_on2$distribution)
+anova(rq2chrome_model0) # check whether there is an interaction between two factors
+rq2chrome_model1 = lm(chrome_on2$Energy_trapz.J. ~ chrome_on2$frequency + chrome_on2$distribution)
+anova(rq2chrome_model1)
+```
+
+From the result of anova(rq2_model0), we can find the p-value of *chrome_on*$frequency:chrome_on$distribution is $0.1236 > 0.05$, so we can conclude that there is no interaction between these two factors. From the result of summary(rq2_model), we can find the p-value of frequency is less than $2e^{-16}$, which means the frequency of sending messages has an impact on the energy consumption. Additionally, the p-value of distribution is $0.1384 > 0.05$, for Chrome, there is no big difference in the energy consumption when sending messages with different sending patterns.
+
+Regarding Firefox:
+
+```{r}
+par(mfrow=c(1,2))
+boxplot(firefox_on$Energy_trapz.J. ~ chrome_on$frequency)
+boxplot(firefox_on2$Energy_trapz.J. ~ chrome_on2$distribution)
+```
+
+```{r}
+firefox_on2$frequency = as.factor(firefox_on2$frequency)
+firefox_on2$distribution = as.factor(firefox_on2$distribution)
+rq2fire_model0 = lm(firefox_on2$Energy_trapz.J. ~ firefox_on2$frequency * firefox_on2$distribution)
+anova(rq2fire_model0) # check whether there is an interaction between two factors
+```
+
+From the result we got from anova test, there is an interaction of these two factors when we use Firefox as our browser as its p-value is $0.04035 < 0.05$. Additionally, both two factors have impact on the energy consumption. Because their p-values are less than $0.05$.
