@@ -62,4 +62,30 @@ Fill in the root object of devices.json in the root of the cloned repository, ju
 ```json
 "pixel5g-wifid": "192.168.0.100:5037"
 ```
-Here "pixel5g-wifid" is a device name used by the JSON configuration files of the experiment. You may change it to another name. 
+Here "pixel5g-wifid" is a device name used by the JSON configuration files of the experiment. You may change it to another name.
+
+Check the experiment configuration files cfg-chrome.json and cfg-firefox.json in the "exp" directory of the cloned repository. In the "devices" key, fill in the device name you just filled in devices.json. For instance,
+```json
+"devices": {
+    "pixel5g-wifid": {}
+}
+```
+Note: When needed, some experimental configurations can be designated in the blank {} above. See the pages of [Android Runner](https://github.com/S2-group/android-runner).
+
+For our experiment, to reduce fluctuation of measurements as much as possible:
+1. Disable all the sounds and vibrations on the Android device under test. 
+2. Set "Background process limit" as "No background processes" in Developer Options on the Android device under test.
+3. Prepare a Telegram account with no contacts added and no groups joined.
+
+Our experiment is executed with Chrome and Firefox, as well as Telegram Web. Before the beginning of the execution, you need to login to Telegram Web on the Android device under test.
+
+You should adjust necessary settings according to the contents of the experiment before starting, e.g., brightness, notifications on lock screen (show or don't show any notifications, ...), etc.
+
+Run the experiment:
+```bash
+python3 run.py --config exp/cfg-chrome.json
+python3 run.py --config exp/cfg-firefox.json
+```
+
+Then you do not need to do anything else. The whole experiment will be executed automatically. You can check the progress of the experiment in the terminal. The experimental results (energy data in CSV files) are saved in the exp/output directory.
+
