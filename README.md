@@ -1,5 +1,7 @@
 # Experimental Process
 
+The procedures are successfully completed on a Raspberry Pi 3B with 1 GB memory.
+
 ## Preparation
 
 1. Get a Raspberry Pi (RPi) with a TF card.
