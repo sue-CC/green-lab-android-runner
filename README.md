@@ -43,9 +43,8 @@ Check the IP address of the Android phone, similar to checking the IP address of
 
 If this Android device has not been connected to the RPi before, run the following command first:
 ```bash
-adb tcpip 5037
+adb tcpip 5037 # 5037 is the port number that Android Debug Bridge (ADB) will connect later. You may change it to another port.
 ```
-"5037" is the port number that Android Debug Bridge (ADB) will connect later. You may change it to another port.
 
 Connect ADB to the Android device:
 ```bash
