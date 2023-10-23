@@ -1,5 +1,2 @@
-# Replication Package
+# Experimental Process
 
-```shell
-pip3 install -r requirements.txt
-```
