@@ -81,6 +81,8 @@ Our experiment is executed with Chrome and Firefox, as well as Telegram Web. Bef
 
 You should adjust necessary settings according to the contents of the experiment before starting, e.g., brightness, notifications on lock screen (show or don't show any notifications, ...), etc.
 
+If you want to keep the experiment running after you disconnect from the RPi, you can use [tmux](https://github.com/S2-group/android-runner/blob/master/docs/rpi_ar_setup.md#tips--tricks) before running the experiment.
+
 Run the experiment:
 ```bash
 python3 run.py --config exp/cfg-chrome.json
