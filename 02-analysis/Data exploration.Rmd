@@ -49,7 +49,7 @@ df1 = data.frame(
 )
 ggplot(df, aes(x = Values, fill = Group)) +
   geom_density(alpha = 0.5) +
-  labs(title = "Density PLot", x = "X轴标签", y = "密度")
+  labs(title = "Density PLot", x = "X_label", y = "density") +
 ```
 **RQ2: Imapct of distribution patterns** (Chrome)
 ```{r echo=FALSE}
