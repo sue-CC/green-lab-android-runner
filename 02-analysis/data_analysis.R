@@ -1,42 +1,19 @@
----
-title: "Data_analysis"
-output: pdf_document
-date: "2023-10-13"
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-# Green Lab
-
-## Data exploration
-
-**Import data**
-
-```{r}
 library(ggplot2)
 library(effectsize)
+
+# loading data
 data0 = read.table("/Users/suecai/Desktop/Green Lab/combined.txt", header = TRUE)
 head(data0)
-```
 
-**RQ-1: Notification status**
-
-*Prepare data*
-
-```{r echo=FALSE}
+# RQ-1: Notification status
+# Prepare data sets
 chrome_off = data0[data0$browser == "chrome"&data0$notification_status == "off",]
 chrome_on = data0[data0$browser == "chrome"&data0$notification_status == "on",]
 firefox_off = data0[data0$browser == "firefox"&data0$notification_status == "off",]
 firefox_on = data0[data0$browser == "firefox"&data0$notification_status == "on",]
-```
 
-*Normality check*
-
-For chrome:
-
-```{r}
+# Normality check
+# for chrome
 par(mfrow=c(2,2)) # two plots in one row next to each other
 plot(density(chrome_on$Energy_trapz.J.), main = "Density plot of chrome-on")
 qqnorm(chrome_on$Energy_trapz.J., main = "Q-Q plot of chrome-on")
@@ -44,11 +21,8 @@ shapiro.test(chrome_on$Energy_trapz.J.) # check the data normality of difference
 plot(density(chrome_off$Energy_trapz.J.) , main = "Density plot of chrome-off")
 qqnorm(chrome_off$Energy_trapz.J., , main = "Q-Q plot of chrome-off")
 shapiro.test(chrome_off$Energy_trapz.J.) # check the data normality of differences of notification on 
-```
 
-For Firefox:
-
-```{r}
+# for firefox
 par(mfrow=c(2,2)) # two plots in one row next to each other
 plot(density(firefox_on$Energy_trapz.J.), main = "Density plot of firefox-on" )
 qqnorm(firefox_on$Energy_trapz.J.,  main = "Q-Q plot of firefox-on")
@@ -56,22 +30,18 @@ shapiro.test(firefox_on$Energy_trapz.J.) # check the data normality when notific
 plot(density(firefox_off$Energy_trapz.J. ), main = "Density plot of firefox-off")
 qqnorm(firefox_off$Energy_trapz.J., , main = "Q-Q plot of firefox-off")
 shapiro.test(firefox_off$Energy_trapz.J.) # check the data normality when notification off under Firefox
-```
 
-*Hypothesis test*
-
-```{r}
+# hypothesis test
 wilcox.test(chrome_off$Energy_trapz.J., chrome_on$Energy_trapz.J., alternative = "less") # chrome
 wilcox.test(firefox_off$Energy_trapz.J., firefox_on$Energy_trapz.J., alternative = "less") # Firefox-16
-```
 
-**RQ1-1: Impact of Browsers**
 
-*Normality check*
-
-```{r}
+# RQ1-1: Impact of Browsers
+# prepare data
 dif_chr = chrome_on$Energy_trapz.J. - chrome_off$Energy_trapz.J. 
 dif_fire = firefox_on$Energy_trapz.J. - firefox_off$Energy_trapz.J. # Calculation of the increase in energy consumption due to switching on notifications
+
+# Normality check
 par(mfrow=c(2,2)) # two plots in one row next to each other
 plot(density(dif_chr), main = "Density plot of energy dif in chrome" )
 qqnorm(dif_chr,  main = "Q-Q plot of energy dif in chrome")
@@ -79,19 +49,13 @@ shapiro.test(dif_chr)
 plot(density(dif_fire), main = "Density plot of energy dif in Firefox")
 qqnorm(dif_fire , main = "Q-Q plot of energy dif in Firefox")
 shapiro.test(dif_fire) 
-```
 
-*Hypothesis test*
-
-```{r}
+# hypothesis test
 wilcox.test(dif_chr, dif_fire)
-```
 
-**RQ2: Impact of distribution patterns**
 
-*Prepare data*
-
-```{r}
+# RQ2: Impact of distribution patterns
+# prepare data
 chrome_on2 = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency != "idle",]
 chrome_off2 = data0[data0$browser == "chrome"&data0$notification_status == "off"&data0$frequency != "idle",]
 
@@ -129,11 +93,8 @@ firefox_off22burst = data0[data0$browser == "firefox"&data0$notification_status 
 firefox_on22even = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$distribution == "even",]
 firefox_off22even = data0[data0$browser == "firefox"&data0$notification_status == "off"&data0$distribution == "even",]
 
-```
+# Normality check
 
-*Normality check*
-
-```{r}
 # frequency
 par(mfrow=c(3,4))
 # chrome idle
@@ -168,9 +129,8 @@ qqnorm(firefox_on22burst$Energy_trapz.J. - firefox_off22burst$Energy_trapz.J., m
 # firefox even
 plot(density(firefox_on22even$Energy_trapz.J. - firefox_off22even$Energy_trapz.J.), main = "firefox even")
 qqnorm(firefox_on22even$Energy_trapz.J. - firefox_off22even$Energy_trapz.J., main = "firefox even")
-```
 
-```{r}
+# shapiro test
 shapiro.test(chrome_on21idle$Energy_trapz.J. - chrome_off21idle$Energy_trapz.J.)
 shapiro.test(chrome_on21low$Energy_trapz.J. - chrome_off21low$Energy_trapz.J.)
 shapiro.test(chrome_on21high$Energy_trapz.J. - chrome_off21high$Energy_trapz.J.)
@@ -181,13 +141,8 @@ shapiro.test(firefox_on21low$Energy_trapz.J. - chrome_off21low$Energy_trapz.J.)
 shapiro.test(firefox_on21high$Energy_trapz.J. - chrome_off21high$Energy_trapz.J.)
 shapiro.test(firefox_on22burst$Energy_trapz.J. - chrome_off22burst$Energy_trapz.J.)
 shapiro.test(firefox_on22even$Energy_trapz.J. - chrome_off22even$Energy_trapz.J.)
-```
 
-*Hypothesis test*
 
-Box plots:
-
-```{r}
 # box plots of chrome
 par(mfrow=c(1,2))
 chrome_on$frequency = factor(chrome_on$frequency, levels = c("idle", "low", "high"))
@@ -198,9 +153,8 @@ firefox_on$frequency = factor(chrome_on$frequency, levels = c("idle", "low", "hi
 par(mfrow=c(1,2))
 boxplot((firefox_on$Energy_trapz.J. - firefox_off$Energy_trapz.J.) ~ firefox_on$frequency, main = "Frequency under Firefox", xlab = "Sending frequency", ylab = "Energy consumption")
 boxplot((firefox_on2$Energy_trapz.J. - firefox_off2$Energy_trapz.J.) ~ firefox_on2$distribution, main = "Distribution under Firefox", xlab = "Sending distribution pattern", ylab = "Energy consumption")
-```
 
-```{r}
+# hypothesis test
 # RQ2 chrome - frequency 
 wilcox.test(chrome_on21high$Energy_trapz.J. - chrome_off21high$Energy_trapz.J., chrome_on21low$Energy_trapz.J. - chrome_off21low$Energy_trapz.J.)
 wilcox.test(chrome_on21high$Energy_trapz.J. - chrome_off21high$Energy_trapz.J., chrome_on21idle$Energy_trapz.J. - chrome_off21idle$Energy_trapz.J.)
@@ -216,31 +170,28 @@ wilcox.test(firefox_on21low$Energy_trapz.J. - firefox_off21low$Energy_trapz.J., 
 
 #RQ2 firefox - distribution
 wilcox.test(firefox_on22burst$Energy_trapz.J. - firefox_off22burst$Energy_trapz.J., firefox_on22even$Energy_trapz.J. - firefox_off22even$Energy_trapz.J.)
-```
 
-**Effect size estimation**
-
-```{r}
+# Effect size estimation
+# effect size of notification status
 cliffs_delta(chrome_on$Energy_trapz.J.,chrome_off$Energy_trapz.J.)
-cliffs_delta(firefox_on$Energy_trapz.J.,firefox_off$Energy_trapz.J.)# effect size of notification status
-cliffs_delta(chrome_on$Energy_trapz.J.-chrome_off$Energy_trapz.J.,firefox_on$Energy_trapz.J.-firefox_off$Energy_trapz.J.) # different browsers
+cliffs_delta(firefox_on$Energy_trapz.J.,firefox_off$Energy_trapz.J.)
 
-```
+# different browsers
+cliffs_delta(chrome_on$Energy_trapz.J.-chrome_off$Energy_trapz.J.,firefox_on$Energy_trapz.J.-firefox_off$Energy_trapz.J.) 
 
-```{r}
 # different frequency under chrome
 cliffs_delta(chrome_on21low$Energy_trapz.J. - chrome_off21low$Energy_trapz.J., chrome_on21high$Energy_trapz.J. - chrome_off21high$Energy_trapz.J.) # low vs high
 cliffs_delta(chrome_on21low$Energy_trapz.J. - chrome_off21low$Energy_trapz.J., chrome_on21idle$Energy_trapz.J. - chrome_off21idle$Energy_trapz.J.) # low vs idle
 cliffs_delta(chrome_on21high$Energy_trapz.J. - chrome_off21high$Energy_trapz.J., chrome_on21idle$Energy_trapz.J. - chrome_off21idle$Energy_trapz.J.) # high vs idle
+
 # different distribution under chrome
 cliffs_delta(chrome_on22burst$Energy_trapz.J. - chrome_off22burst$Energy_trapz.J., chrome_on22even$Energy_trapz.J. - chrome_off22even$Energy_trapz.J.) 
-```
 
-```{r}
 # different frequency under firefox
 cliffs_delta(firefox_on21low$Energy_trapz.J. - firefox_off21low$Energy_trapz.J., firefox_on21high$Energy_trapz.J. - firefox_off21high$Energy_trapz.J.) # low vs high
 cliffs_delta(firefox_on21low$Energy_trapz.J. - firefox_off21low$Energy_trapz.J., firefox_on21idle$Energy_trapz.J. - firefox_off21idle$Energy_trapz.J.) # low vs idle
 cliffs_delta(firefox_on21high$Energy_trapz.J. - firefox_off21high$Energy_trapz.J., firefox_on21idle$Energy_trapz.J. - firefox_off21idle$Energy_trapz.J.) # high vs idle
+
 # different distribution under firefox
 cliffs_delta(firefox_on22even$Energy_trapz.J. - firefox_off22even$Energy_trapz.J., firefox_on22burst$Energy_trapz.J. - firefox_off22burst$Energy_trapz.J.) 
-```
+

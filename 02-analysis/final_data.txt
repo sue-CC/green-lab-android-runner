@@ -1,0 +1,601 @@
+trail_nr browser notification_status frequency distribution Energy_trapz(J)
+trial1 chrome off idle " " 46.088979572880014
+trial1 chrome off idle " " 47.10957503688001
+trial1 chrome off idle " " 46.748118816
+trial1 chrome off idle " " 44.90893410552
+trial1 chrome off idle " " 47.02214864375999
+trial1 chrome off idle " " 44.147858876640015
+trial1 chrome off idle " " 48.502653590880016
+trial1 chrome off idle " " 47.73313713168
+trial1 chrome off idle " " 35.07298739424
+trial1 chrome off idle " " 47.29237793208004
+trial1 chrome off idle " " 46.751835307680025
+trial1 chrome off idle " " 47.44400531616
+trial1 chrome off idle " " 47.76748390944
+trial1 chrome off idle " " 47.09695465584
+trial1 chrome off idle " " 46.4097705624
+trial1 chrome off idle " " 47.162256078239984
+trial1 chrome off idle " " 49.77955014912003
+trial1 chrome off idle " " 45.91427883552
+trial1 chrome off idle " " 46.71460799495999
+trial1 chrome off idle " " 46.514596083839976
+trial1 chrome off idle " " 46.85382862632
+trial1 chrome off idle " " 46.73581086384003
+trial1 chrome off idle " " 47.44277319383999
+trial1 chrome off idle " " 45.32885561879999
+trial1 chrome off idle " " 44.37217124135999
+trial1 chrome off idle " " 45.97115036112001
+trial1 chrome off idle " " 45.40231010592
+trial1 chrome off idle " " 44.83223678448002
+trial1 chrome off idle " " 46.158934330800015
+trial1 chrome off idle " " 47.65903642224001
+trial2 chrome off low even 47.33589263171
+trial2 chrome off low even 48.69799053736001
+trial2 chrome off low even 46.58204423767599
+trial2 chrome off low even 46.92285163246997
+trial2 chrome off low even 40.90273529397
+trial2 chrome off low even 46.61593183660399
+trial2 chrome off low even 48.82491860558397
+trial2 chrome off low even 46.458477523466
+trial2 chrome off low even 45.56568289789202
+trial2 chrome off low even 50.03792107809
+trial2 chrome off low even 46.78726095905999
+trial2 chrome off low even 45.76422717847599
+trial2 chrome off low even 47.53704037512401
+trial2 chrome off low even 47.75864524765999
+trial2 chrome off low even 49.826145150870026
+trial2 chrome off low even 47.54361667512198
+trial2 chrome off low even 50.356729662532
+trial2 chrome off low even 49.788795565641976
+trial2 chrome off low even 46.82129175936801
+trial2 chrome off low even 48.11716206384599
+trial2 chrome off low even 46.95436593429605
+trial2 chrome off low even 49.776917207917975
+trial2 chrome off low even 47.75273101979604
+trial2 chrome off low even 47.801935494418
+trial2 chrome off low even 51.76814457556601
+trial2 chrome off low even 47.225861713258
+trial2 chrome off low even 52.51783889474802
+trial2 chrome off low even 48.33804375093399
+trial2 chrome off low even 49.44887358017598
+trial2 chrome off low even 52.03562515044802
+trial3 chrome off low burst 47.43344813921999
+trial3 chrome off low burst 46.103559544185
+trial3 chrome off low burst 49.07505546157496
+trial3 chrome off low burst 48.245787191745
+trial3 chrome off low burst 44.981540513910005
+trial3 chrome off low burst 48.922229784285
+trial3 chrome off low burst 48.34178915279999
+trial3 chrome off low burst 49.77557051824502
+trial3 chrome off low burst 36.08063367265499
+trial3 chrome off low burst 47.895771035970014
+trial3 chrome off low burst 46.52021239866001
+trial3 chrome off low burst 47.201851749194994
+trial3 chrome off low burst 46.71746410831502
+trial3 chrome off low burst 47.666942918595005
+trial3 chrome off low burst 47.82122567079001
+trial3 chrome off low burst 46.27578396441
+trial3 chrome off low burst 47.64734208234
+trial3 chrome off low burst 48.06797624557501
+trial3 chrome off low burst 47.97437580506998
+trial3 chrome off low burst 46.57414477072498
+trial3 chrome off low burst 48.07679732212499
+trial3 chrome off low burst 46.98342015724498
+trial3 chrome off low burst 49.28506509926999
+trial3 chrome off low burst 48.71836790534998
+trial3 chrome off low burst 46.09358589049499
+trial3 chrome off low burst 45.28503640732501
+trial3 chrome off low burst 45.611984574584994
+trial3 chrome off low burst 31.836825668505
+trial3 chrome off low burst 45.22196013406501
+trial3 chrome off low burst 47.69099456121002
+trial4 chrome off high even 59.35887268137649
+trial4 chrome off high even 51.963998603121006
+trial4 chrome off high even 66.669378644284
+trial4 chrome off high even 60.102233343267
+trial4 chrome off high even 55.30804493517649
+trial4 chrome off high even 52.083382474537984
+trial4 chrome off high even 58.77254633038653
+trial4 chrome off high even 53.64144352193299
+trial4 chrome off high even 55.66202544241052
+trial4 chrome off high even 53.76734862934402
+trial4 chrome off high even 56.78272968610749
+trial4 chrome off high even 58.00494773143848
+trial4 chrome off high even 60.00935515817701
+trial4 chrome off high even 53.88528819293998
+trial4 chrome off high even 56.01515282083652
+trial4 chrome off high even 63.27281429148695
+trial4 chrome off high even 57.68319263253851
+trial4 chrome off high even 54.831784988066
+trial4 chrome off high even 59.680647239647456
+trial4 chrome off high even 60.6743320895045
+trial4 chrome off high even 56.2622146850765
+trial4 chrome off high even 57.578488356508
+trial4 chrome off high even 57.25080434416853
+trial4 chrome off high even 62.3082201131005
+trial4 chrome off high even 53.57004222382651
+trial4 chrome off high even 60.82479644996901
+trial4 chrome off high even 60.777682548687
+trial4 chrome off high even 55.44256532453602
+trial4 chrome off high even 59.41438139108352
+trial4 chrome off high even 57.36128088123001
+trial5 chrome off high burst 57.23387840814004
+trial5 chrome off high burst 54.4901156338
+trial5 chrome off high burst 54.25590379337101
+trial5 chrome off high burst 54.9502230855455
+trial5 chrome off high burst 54.88040765576751
+trial5 chrome off high burst 55.237850045893
+trial5 chrome off high burst 56.40131975011349
+trial5 chrome off high burst 57.27044568355503
+trial5 chrome off high burst 55.83760741863648
+trial5 chrome off high burst 54.853386810799016
+trial5 chrome off high burst 59.95822618406097
+trial5 chrome off high burst 51.8840413146205
+trial5 chrome off high burst 55.75077822796099
+trial5 chrome off high burst 56.68777487688252
+trial5 chrome off high burst 53.57433817747201
+trial5 chrome off high burst 56.751926628242536
+trial5 chrome off high burst 53.88274742975848
+trial5 chrome off high burst 57.15959248377199
+trial5 chrome off high burst 62.776967338801015
+trial5 chrome off high burst 59.217041725168514
+trial5 chrome off high burst 54.9949483543685
+trial5 chrome off high burst 54.402734338456
+trial5 chrome off high burst 54.00183420422499
+trial5 chrome off high burst 54.8600352692115
+trial5 chrome off high burst 55.30480112695752
+trial5 chrome off high burst 53.947192880475
+trial5 chrome off high burst 53.98549964326151
+trial5 chrome off high burst 56.0178143925605
+trial5 chrome off high burst 55.96603386301649
+trial5 chrome off high burst 55.15002030460101
+trial6 chrome on idle " " 47.247344238094
+trial6 chrome on idle " " 47.36176723787601
+trial6 chrome on idle " " 48.392242108028
+trial6 chrome on idle " " 47.29540066296499
+trial6 chrome on idle " " 49.25312663207299
+trial6 chrome on idle " " 48.39283181496398
+trial6 chrome on idle " " 46.309590385604
+trial6 chrome on idle " " 47.78953919084803
+trial6 chrome on idle " " 48.86377099294598
+trial6 chrome on idle " " 47.98491382348301
+trial6 chrome on idle " " 46.365043949679006
+trial6 chrome on idle " " 47.17748921194401
+trial6 chrome on idle " " 48.48648712270999
+trial6 chrome on idle " " 48.17217309140601
+trial6 chrome on idle " " 50.22825943226
+trial6 chrome on idle " " 53.77558247898197
+trial6 chrome on idle " " 49.213844814589
+trial6 chrome on idle " " 48.87981880672801
+trial6 chrome on idle " " 48.71636582103202
+trial6 chrome on idle " " 50.44615860647998
+trial6 chrome on idle " " 47.80978268894098
+trial6 chrome on idle " " 49.73136551383
+trial6 chrome on idle " " 50.841957640292
+trial6 chrome on idle " " 47.199063908269
+trial6 chrome on idle " " 49.125340017754
+trial6 chrome on idle " " 49.99475573119298
+trial6 chrome on idle " " 46.95655934023601
+trial6 chrome on idle " " 47.536570897452
+trial6 chrome on idle " " 48.596218577179016
+trial6 chrome on idle " " 37.548152753202
+trial7 chrome on low even 61.62464989485999
+trial7 chrome on low even 63.28975588169004
+trial7 chrome on low even 60.78133913747999
+trial7 chrome on low even 63.03078899883997
+trial7 chrome on low even 61.95125557803003
+trial7 chrome on low even 66.98093851696004
+trial7 chrome on low even 64.78470968111999
+trial7 chrome on low even 61.22234668836002
+trial7 chrome on low even 58.45803512705001
+trial7 chrome on low even 62.65519414622001
+trial7 chrome on low even 64.0343584101
+trial7 chrome on low even 65.54189686889
+trial7 chrome on low even 59.58225271465999
+trial7 chrome on low even 63.54778002053004
+trial7 chrome on low even 65.36936750382998
+trial7 chrome on low even 61.25374295169996
+trial7 chrome on low even 64.13922141172
+trial7 chrome on low even 70.67579116884
+trial7 chrome on low even 61.854628700540005
+trial7 chrome on low even 63.34207655763001
+trial7 chrome on low even 63.4172418555
+trial7 chrome on low even 61.64460332186
+trial7 chrome on low even 62.38473696065004
+trial7 chrome on low even 63.8031288659699
+trial7 chrome on low even 62.95037301058999
+trial7 chrome on low even 62.67272395020007
+trial7 chrome on low even 62.34441575154001
+trial7 chrome on low even 65.35414469454
+trial7 chrome on low even 63.38891151632002
+trial7 chrome on low even 61.85932489528997
+trial8 chrome on low burst 62.10044590791696
+trial8 chrome on low burst 63.89219083479496
+trial8 chrome on low burst 64.35140935895001
+trial8 chrome on low burst 63.774946867796
+trial8 chrome on low burst 61.12824558123795
+trial8 chrome on low burst 61.81092081879002
+trial8 chrome on low burst 59.340731075237
+trial8 chrome on low burst 73.77961415493303
+trial8 chrome on low burst 64.65265256401099
+trial8 chrome on low burst 61.94789988773202
+trial8 chrome on low burst 61.250679960828
+trial8 chrome on low burst 61.85804352925901
+trial8 chrome on low burst 65.10373559848098
+trial8 chrome on low burst 61.36132443732201
+trial8 chrome on low burst 63.48926153897203
+trial8 chrome on low burst 64.68110016255496
+trial8 chrome on low burst 61.961603610981015
+trial8 chrome on low burst 54.40853051835499
+trial8 chrome on low burst 60.94733997629702
+trial8 chrome on low burst 59.581124312864006
+trial8 chrome on low burst 62.00952817352194
+trial8 chrome on low burst 67.72002303297397
+trial8 chrome on low burst 61.20641379617195
+trial8 chrome on low burst 62.756042793425024
+trial8 chrome on low burst 66.23077416837299
+trial8 chrome on low burst 61.27702539175601
+trial8 chrome on low burst 61.35279499332003
+trial8 chrome on low burst 69.80046238387399
+trial8 chrome on low burst 60.20660449389698
+trial8 chrome on low burst 70.92048768429807
+trial9 chrome on high even 66.44445800323604
+trial9 chrome on high even 73.06510088269951
+trial9 chrome on high even 70.47117128402351
+trial9 chrome on high even 73.38866834423904
+trial9 chrome on high even 76.33558635262202
+trial9 chrome on high even 68.51640212357245
+trial9 chrome on high even 71.85608580832846
+trial9 chrome on high even 70.03045059181345
+trial9 chrome on high even 66.46203648501849
+trial9 chrome on high even 69.92947094196649
+trial9 chrome on high even 68.61454924314049
+trial9 chrome on high even 67.99096363644604
+trial9 chrome on high even 69.32906043611155
+trial9 chrome on high even 72.39023314819808
+trial9 chrome on high even 72.78695155667202
+trial9 chrome on high even 69.09494882813499
+trial9 chrome on high even 70.31829689503101
+trial9 chrome on high even 72.41949626887603
+trial9 chrome on high even 82.38113857353696
+trial9 chrome on high even 70.07575137630155
+trial9 chrome on high even 75.77200443022099
+trial9 chrome on high even 74.05706189781495
+trial9 chrome on high even 70.42136238594095
+trial9 chrome on high even 71.45259244503603
+trial9 chrome on high even 70.9370140832625
+trial9 chrome on high even 67.7012128194805
+trial9 chrome on high even 71.57668501435745
+trial9 chrome on high even 74.14436398164992
+trial9 chrome on high even 74.93094220509101
+trial9 chrome on high even 69.55858768592745
+trial10 chrome on high burst 75.82444178968748
+trial10 chrome on high burst 69.03638090781257
+trial10 chrome on high burst 79.28068675625005
+trial10 chrome on high burst 67.22134957124995
+trial10 chrome on high burst 68.04433740562504
+trial10 chrome on high burst 68.28223619000002
+trial10 chrome on high burst 73.1318904596875
+trial10 chrome on high burst 72.42454545812495
+trial10 chrome on high burst 79.01816978343743
+trial10 chrome on high burst 76.95375925343751
+trial10 chrome on high burst 65.93037455593753
+trial10 chrome on high burst 63.657960025625
+trial10 chrome on high burst 67.29822443531253
+trial10 chrome on high burst 71.74115494875002
+trial10 chrome on high burst 67.10013926218753
+trial10 chrome on high burst 70.81279582343745
+trial10 chrome on high burst 68.52915855843757
+trial10 chrome on high burst 67.35756633375004
+trial10 chrome on high burst 65.527509621875
+trial10 chrome on high burst 63.612684821874986
+trial10 chrome on high burst 70.16644035625005
+trial10 chrome on high burst 76.13045286656252
+trial10 chrome on high burst 68.83715199374998
+trial10 chrome on high burst 66.0203576571875
+trial10 chrome on high burst 65.94705616843748
+trial10 chrome on high burst 65.52661254343747
+trial10 chrome on high burst 66.86470712468741
+trial10 chrome on high burst 66.81053853687496
+trial10 chrome on high burst 70.02047713937495
+trial10 chrome on high burst 67.06594391000002
+trial11 firefox off idle " " 34.7427541326625
+trial11 firefox off idle " " 33.88398527841248
+trial11 firefox off idle " " 35.09848257448298
+trial11 firefox off idle " " 43.02282690692401
+trial11 firefox off idle " " 36.67236554901249
+trial11 firefox off idle " " 38.24118172675296
+trial11 firefox off idle " " 34.30787997189299
+trial11 firefox off idle " " 33.927404703380006
+trial11 firefox off idle " " 35.41710706172951
+trial11 firefox off idle " " 41.2517242541455
+trial11 firefox off idle " " 35.78402075143252
+trial11 firefox off idle " " 33.95191810194051
+trial11 firefox off idle " " 34.79400148369952
+trial11 firefox off idle " " 35.69340155498597
+trial11 firefox off idle " " 36.08082238545698
+trial11 firefox off idle " " 35.77163243928599
+trial11 firefox off idle " " 35.11847667657548
+trial11 firefox off idle " " 35.912611554953514
+trial11 firefox off idle " " 35.31368440293551
+trial11 firefox off idle " " 39.97048079517647
+trial11 firefox off idle " " 40.65278817769696
+trial11 firefox off idle " " 36.58175053765752
+trial11 firefox off idle " " 37.8919854660985
+trial11 firefox off idle " " 35.178906053527
+trial11 firefox off idle " " 34.228745762468506
+trial11 firefox off idle " " 34.74489367232601
+trial11 firefox off idle " " 34.58835644449751
+trial11 firefox off idle " " 33.985321757982504
+trial11 firefox off idle " " 35.25526017840652
+trial11 firefox off idle " " 35.365541394850005
+trial12 firefox off low even 37.606357528278
+trial12 firefox off low even 37.54853741972597
+trial12 firefox off low even 38.73083709989599
+trial12 firefox off low even 39.94726481509001
+trial12 firefox off low even 38.71824900252402
+trial12 firefox off low even 36.87548436871201
+trial12 firefox off low even 39.65382229110997
+trial12 firefox off low even 38.16665782439401
+trial12 firefox off low even 40.73422501977197
+trial12 firefox off low even 40.13445932429599
+trial12 firefox off low even 36.90021293618397
+trial12 firefox off low even 42.686370022262
+trial12 firefox off low even 39.363035407985976
+trial12 firefox off low even 51.10439563945599
+trial12 firefox off low even 40.49084011388198
+trial12 firefox off low even 36.38357484479603
+trial12 firefox off low even 38.340892567132
+trial12 firefox off low even 45.29741377033199
+trial12 firefox off low even 37.66452608542201
+trial12 firefox off low even 36.92286210088601
+trial12 firefox off low even 37.78207484087999
+trial12 firefox off low even 39.63002312866599
+trial12 firefox off low even 39.90475261225201
+trial12 firefox off low even 37.918131082591984
+trial12 firefox off low even 37.975280189924
+trial12 firefox off low even 49.14454520017
+trial12 firefox off low even 37.971061391860005
+trial12 firefox off low even 39.14110020000798
+trial12 firefox off low even 57.80048560839998
+trial12 firefox off low even 39.47199412209398
+trial13 firefox off low burst 47.857030351585024
+trial13 firefox off low burst 37.17265771350301
+trial13 firefox off low burst 36.30509180205051
+trial13 firefox off low burst 35.7802968837925
+trial13 firefox off low burst 36.71666497135003
+trial13 firefox off low burst 35.78988770151599
+trial13 firefox off low burst 33.93259279801302
+trial13 firefox off low burst 35.40077997827149
+trial13 firefox off low burst 35.53339442381299
+trial13 firefox off low burst 37.25978051010152
+trial13 firefox off low burst 35.3167479584595
+trial13 firefox off low burst 35.68904557049001
+trial13 firefox off low burst 36.41769168592752
+trial13 firefox off low burst 46.722446641494
+trial13 firefox off low burst 37.809728460803015
+trial13 firefox off low burst 36.484012535815
+trial13 firefox off low burst 36.517586413477
+trial13 firefox off low burst 35.389834629058
+trial13 firefox off low burst 34.354755305396495
+trial13 firefox off low burst 39.382264543218994
+trial13 firefox off low burst 37.12209825862851
+trial13 firefox off low burst 36.54538107697749
+trial13 firefox off low burst 35.918916164124504
+trial13 firefox off low burst 35.25336633146248
+trial13 firefox off low burst 35.35600265728699
+trial13 firefox off low burst 36.42596466966602
+trial13 firefox off low burst 35.5003890937345
+trial13 firefox off low burst 36.7354740704575
+trial13 firefox off low burst 36.46470946892153
+trial13 firefox off low burst 37.09270957996501
+trial14 firefox off high even 48.28634668565398
+trial14 firefox off high even 48.69218493578998
+trial14 firefox off high even 47.41339166084397
+trial14 firefox off high even 47.74469094535803
+trial14 firefox off high even 49.06069041112799
+trial14 firefox off high even 46.50673567696203
+trial14 firefox off high even 59.21995977988201
+trial14 firefox off high even 48.202548833472
+trial14 firefox off high even 48.71502999686397
+trial14 firefox off high even 49.06081142793603
+trial14 firefox off high even 51.38422846972806
+trial14 firefox off high even 48.26306364349799
+trial14 firefox off high even 48.01417790597996
+trial14 firefox off high even 48.52047898519797
+trial14 firefox off high even 52.61124753667201
+trial14 firefox off high even 48.78859333557002
+trial14 firefox off high even 48.43298738487
+trial14 firefox off high even 48.15986218203598
+trial14 firefox off high even 48.593107946394014
+trial14 firefox off high even 50.27587028884196
+trial14 firefox off high even 49.474336954283984
+trial14 firefox off high even 47.35441313492999
+trial14 firefox off high even 49.70057886096598
+trial14 firefox off high even 50.12493322696199
+trial14 firefox off high even 51.412544205396
+trial14 firefox off high even 48.219224592792
+trial14 firefox off high even 48.934799175900025
+trial14 firefox off high even 47.865155861226
+trial14 firefox off high even 52.56300330269998
+trial14 firefox off high even 47.94790180547397
+trial15 firefox off high burst 38.83085594919301
+trial15 firefox off high burst 40.055841931686
+trial15 firefox off high burst 38.50401726423
+trial15 firefox off high burst 45.39590217976796
+trial15 firefox off high burst 50.350544739830994
+trial15 firefox off high burst 38.67110412845399
+trial15 firefox off high burst 38.50047990576899
+trial15 firefox off high burst 40.05465278812197
+trial15 firefox off high burst 39.43568292010198
+trial15 firefox off high burst 39.99905090334301
+trial15 firefox off high burst 38.558499674919005
+trial15 firefox off high burst 37.44393817300503
+trial15 firefox off high burst 41.00703912983998
+trial15 firefox off high burst 40.01462870399399
+trial15 firefox off high burst 38.73341085984298
+trial15 firefox off high burst 39.19970275017301
+trial15 firefox off high burst 40.202407452920994
+trial15 firefox off high burst 41.80763879951398
+trial15 firefox off high burst 38.46818545239599
+trial15 firefox off high burst 37.288289609697
+trial15 firefox off high burst 39.543080968671006
+trial15 firefox off high burst 38.722725448386015
+trial15 firefox off high burst 37.67795842708799
+trial15 firefox off high burst 39.32499621855001
+trial15 firefox off high burst 39.001720093812
+trial15 firefox off high burst 40.616702820141015
+trial15 firefox off high burst 40.637727827676
+trial15 firefox off high burst 40.19557342180799
+trial15 firefox off high burst 39.23498195446197
+trial15 firefox off high burst 50.812927252353006
+trial16 firefox on idle " " 41.60015872562401
+trial16 firefox on idle " " 36.75062038424998
+trial16 firefox on idle " " 34.106292374418004
+trial16 firefox on idle " " 35.412797910984
+trial16 firefox on idle " " 36.62977305491799
+trial16 firefox on idle " " 35.88413055262597
+trial16 firefox on idle " " 43.986754648942
+trial16 firefox on idle " " 42.501459311324
+trial16 firefox on idle " " 44.24836616883799
+trial16 firefox on idle " " 42.10309771209397
+trial16 firefox on idle " " 34.209768948622
+trial16 firefox on idle " " 33.42330982729399
+trial16 firefox on idle " " 37.465550796842
+trial16 firefox on idle " " 34.21428394970401
+trial16 firefox on idle " " 33.792151761326
+trial16 firefox on idle " " 40.98353615816202
+trial16 firefox on idle " " 35.20371273961801
+trial16 firefox on idle " " 35.04941096342199
+trial16 firefox on idle " " 44.38341995104
+trial16 firefox on idle " " 36.29815808671799
+trial16 firefox on idle " " 33.63195384940798
+trial16 firefox on idle " " 35.026906745308
+trial16 firefox on idle " " 40.07879673769801
+trial16 firefox on idle " " 35.539337203502
+trial16 firefox on idle " " 36.079856220624
+trial16 firefox on idle " " 42.901071130366006
+trial16 firefox on idle " " 34.422960750486
+trial16 firefox on idle " " 34.43222990426398
+trial16 firefox on idle " " 35.60795280538399
+trial16 firefox on idle " " 38.00158378813599
+trial17 firefox on low even 59.18362453232999
+trial17 firefox on low even 58.00596012737503
+trial17 firefox on low even 62.25331307630999
+trial17 firefox on low even 60.52759811469
+trial17 firefox on low even 58.61678424227995
+trial17 firefox on low even 57.70500481438502
+trial17 firefox on low even 69.08710757045499
+trial17 firefox on low even 57.871021069039976
+trial17 firefox on low even 59.506323640434985
+trial17 firefox on low even 68.11532658616501
+trial17 firefox on low even 57.71831565655996
+trial17 firefox on low even 50.78679588824002
+trial17 firefox on low even 57.16769691696997
+trial17 firefox on low even 56.21564079533009
+trial17 firefox on low even 58.265510942450064
+trial17 firefox on low even 58.30980403402504
+trial17 firefox on low even 60.56588405318497
+trial17 firefox on low even 49.15821333348999
+trial17 firefox on low even 55.03873057700992
+trial17 firefox on low even 58.41280973189998
+trial17 firefox on low even 59.18244162268498
+trial17 firefox on low even 58.123560318789984
+trial17 firefox on low even 58.08036823263001
+trial17 firefox on low even 66.66827771125998
+trial17 firefox on low even 47.93580213485001
+trial17 firefox on low even 59.035594202059954
+trial17 firefox on low even 68.782739076365
+trial17 firefox on low even 59.61551727159
+trial17 firefox on low even 59.04575699498997
+trial17 firefox on low even 59.04448258238001
+trial18 firefox on low burst 46.348749965700016
+trial18 firefox on low burst 43.13569652326351
+trial18 firefox on low burst 44.23589913521997
+trial18 firefox on low burst 43.75710802177652
+trial18 firefox on low burst 43.455649535707465
+trial18 firefox on low burst 44.89779921026396
+trial18 firefox on low burst 45.40758416196599
+trial18 firefox on low burst 53.06009791377754
+trial18 firefox on low burst 44.72188840448551
+trial18 firefox on low burst 44.70509104245599
+trial18 firefox on low burst 54.083325741763474
+trial18 firefox on low burst 44.673664271535046
+trial18 firefox on low burst 46.23286200413401
+trial18 firefox on low burst 42.39113879147545
+trial18 firefox on low burst 43.34384128608305
+trial18 firefox on low burst 45.77415910945803
+trial18 firefox on low burst 44.47831501066205
+trial18 firefox on low burst 43.87285842985496
+trial18 firefox on low burst 44.90713467514948
+trial18 firefox on low burst 44.15809578897601
+trial18 firefox on low burst 46.19288040447601
+trial18 firefox on low burst 45.81774917173352
+trial18 firefox on low burst 44.88039213537756
+trial18 firefox on low burst 45.38156476021351
+trial18 firefox on low burst 43.01277108289198
+trial18 firefox on low burst 42.30727704978448
+trial18 firefox on low burst 43.4990971130625
+trial18 firefox on low burst 45.471850486647
+trial18 firefox on low burst 46.03004150327703
+trial18 firefox on low burst 48.55048818151352
+trial19 firefox on high even 52.45486537427401
+trial19 firefox on high even 60.75181977196198
+trial19 firefox on high even 52.94948356991701
+trial19 firefox on high even 54.59633684439
+trial19 firefox on high even 53.356320774009006
+trial19 firefox on high even 52.57685437633204
+trial19 firefox on high even 52.26488997945604
+trial19 firefox on high even 51.042678519426005
+trial19 firefox on high even 51.90669988277401
+trial19 firefox on high even 50.81635992265799
+trial19 firefox on high even 50.26494446235901
+trial19 firefox on high even 64.46020198873197
+trial19 firefox on high even 58.032833697860966
+trial19 firefox on high even 51.383940786651
+trial19 firefox on high even 54.14520247418697
+trial19 firefox on high even 56.17790959433405
+trial19 firefox on high even 52.86623577397799
+trial19 firefox on high even 50.73011431362598
+trial19 firefox on high even 55.24280083555199
+trial19 firefox on high even 50.91343804981501
+trial19 firefox on high even 55.76692876398603
+trial19 firefox on high even 52.84374419296504
+trial19 firefox on high even 53.54679193030198
+trial19 firefox on high even 53.424632709986994
+trial19 firefox on high even 51.30660558058202
+trial19 firefox on high even 52.03111906347301
+trial19 firefox on high even 52.79170459127399
+trial19 firefox on high even 53.28223147955397
+trial19 firefox on high even 55.34682574119599
+trial19 firefox on high even 56.583891756084014
+trial20 firefox on high burst 52.85172682300802
+trial20 firefox on high burst 41.22185266676398
+trial20 firefox on high burst 40.83921675479701
+trial20 firefox on high burst 43.49969047226402
+trial20 firefox on high burst 41.83590770498401
+trial20 firefox on high burst 42.82411714034699
+trial20 firefox on high burst 43.589789228112
+trial20 firefox on high burst 39.873544698504006
+trial20 firefox on high burst 43.11651584481598
+trial20 firefox on high burst 40.68576666526501
+trial20 firefox on high burst 52.18639169907301
+trial20 firefox on high burst 42.281862926070005
+trial20 firefox on high burst 42.94322617700401
+trial20 firefox on high burst 39.06799141453497
+trial20 firefox on high burst 39.43696673783699
+trial20 firefox on high burst 42.45950770415398
+trial20 firefox on high burst 42.69717067392298
+trial20 firefox on high burst 43.49139774607504
+trial20 firefox on high burst 41.65303032359401
+trial20 firefox on high burst 41.850734335884006
+trial20 firefox on high burst 43.834399834698
+trial20 firefox on high burst 41.53279759605301
+trial20 firefox on high burst 41.72282908125301
+trial20 firefox on high burst 52.20852260006102
+trial20 firefox on high burst 40.525337878746
+trial20 firefox on high burst 41.317288750347
+trial20 firefox on high burst 42.988376588052
+trial20 firefox on high burst 41.43396746061299
+trial20 firefox on high burst 41.43249338174701
+trial20 firefox on high burst 40.889693610327015

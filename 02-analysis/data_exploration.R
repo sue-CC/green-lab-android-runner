@@ -1,86 +1,38 @@
----
-title: "Data_analysis"
-output: pdf_document
-date: "2023-10-13"
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-# Green Lab
-## Data exploration
-**Import data**
-
-```{r}
-data0 = read.table("/Users/zhaoyiming/Documents/GreenLab/green-lab-android-runner/01-data-processing/combined.txt", header = TRUE)
+# loading data
+data0 = read.table("/Users/suecai/Documents/GreenLab/green-lab-android-runner/01-data-processing/combined.txt", header = TRUE)
 head(data0)
-```
 
-**RQ-1: Notification status**
-
-*Prepare data*
-
-```{r echo=FALSE}
+# RQ-1: Notification status
+# prepare data
 chrome_off = data0[data0$browser == "chrome"&data0$notification_status == "off",]
 chrome_on = data0[data0$browser == "chrome"&data0$notification_status == "on",]
 firefox_off = data0[data0$browser == "firefox"&data0$notification_status == "off",]
 firefox_on = data0[data0$browser == "firefox"&data0$notification_status == "on",]
-```
-
-#Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-*Plots of chrome*
-
-```{r echo=FALSE}
-#histogram
-#par(mfrow=c(1,2))
-#hist(chrome_off$Energy_trapz.J., main = "chrome off")
-#hist(chrome_on$Energy_trapz.J., main = "chrome on")
 
 #box plot
 chrome_status = list(x= chrome_off$Energy_trapz.J, y = chrome_on$Energy_trapz.J., z = firefox_off$Energy_trapz.J., w = firefox_on$Energy_trapz.J.)
 boxplot(chrome_status, names = c("chrome_off", "chrome_on", "firefox_off", "firefox_on"), main = "Boxplot of Chrome and Firefox", xlab = "browsers and notification status", ylab = "Energy_trapz.J")
 
-#density plot
-df1 = data.frame(
-  Group = factor(c(rep("Group 1", length(chrome_off$Energy_trapz.J.)), rep("Group 2", length(chrome_on$Energy_trapz.J.)), rep("Group 3", length(firefox_off$Energy_trapz.J.)), rep("Group 4", length(firefox_on$Energy_trapz.J.)))),
-  Values = c(chrome_off$Energy_trapz.J., chrome_on$Energy_trapz.J.)
-)
-ggplot(df, aes(x = Values, fill = Group)) +
-  geom_density(alpha = 0.5) +
-  labs(title = "Density PLot", x = "X_label", y = "density") +
-```
-**RQ2: Imapct of distribution patterns** (Chrome)
-```{r echo=FALSE}
+#RQ2: Imapct of distribution patterns (Chrome)
+# prepare data
 chrome_idle = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency == "idle",]
 chrome_low_even = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency == "low"&data0$distribution == "even",]
 chrome_low_burst = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency == "low"&data0$distribution == "burst",]
 chrome_high_even = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency == "high"&data0$distribution == "even",]
 chrome_high_burst = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency == "high"&data0$distribution == "burst",]
-```
-
-```{r echo=FALSE}
 
 #box plot
 chrome_notification = list(x= chrome_idle$Energy_trapz.J, y = chrome_low_even$Energy_trapz.J., z = chrome_low_burst$Energy_trapz.J., w = chrome_high_even$Energy_trapz.J., v = chrome_high_burst$Energy_trapz.J.)
 boxplot(chrome_notification, names = c("chrome_idle", "chrome_low_even", "chrome_low_burst","chrome_high_even", "chrome_high_burst"), main = "Boxplot of Chrome", xlab = "Notification Patterns", ylab = "Energy_trapz.J")
-```
 
-**RQ2: Imapct of distribution patterns** (Firefox)
-
-```{r echo=FALSE}
-#box plot
+#RQ2: Imapct of distribution patterns(Firefox)
+#prepare data
 firefox_idle = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "idle",]
 firefox_low_even = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "low"&data0$distribution == "even",]
 firefox_low_burst = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "low"&data0$distribution == "burst",]
 firefox_high_even = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "high"&data0$distribution == "even",]
 firefox_high_burst = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "high"&data0$distribution == "burst",]
-```
-```{r}
 
 #box plot
 firefox_notification = list(x= firefox_idle$Energy_trapz.J, y = firefox_low_even$Energy_trapz.J., z = firefox_low_burst$Energy_trapz.J., w = firefox_high_even$Energy_trapz.J., v = firefox_high_burst$Energy_trapz.J.)
 boxplot(firefox_notification, names = c("Firefox_idle", "Firefox_low_even", "Firefox_low_burst","Firefox_high_even", "Firefox_high_burst"), main = "Boxplot of Firefox", xlab = "Notification Patterns", ylab = "Energy_trapz.J")
-
-```
