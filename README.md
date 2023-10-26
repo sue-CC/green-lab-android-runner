@@ -31,7 +31,6 @@ install.packages("tidyr")
 Note: Before running these two `.Rmd` files, we need change the dataset path to the folder where you put the data.
 ```{R}
 data0 = read.table("pathname/combined.txt", header = TRUE)
-
 ```
 
 
