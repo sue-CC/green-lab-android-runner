@@ -1,24 +1,41 @@
 # Replication Package
-
-```shell
+The replication package includes two parts: data analysis(include data) and experiment excution. For the data analysis part, it's used to save data, process data and anlyze data. For the experiment excuetion part, located in the branch of `android-runner-kit`, it's used for running our experiments. 
+<!-- ```shell
 pip3 install -r requirements.txt
-```
+``` -->
 
-# Data preparation 
-Put the experiment data in the folder `data/`. The data file should be named as format `trialNumber_browser_notificationStatus_notifiactionFrequency_notificationDistribution`. For example, `trial2_chrome_off_low_even.csv` is the data file for the second dataset. 
-Change the folderpath in 'explore.py' to the folder where you put the data.
-Change the resultpath in 'explore.py' to the folder where you want to put the results.
-We use the file `explore.py` to prepare the data. 
-We generate the combined data file `combined.txt` and the statistics description are shown in the file.
-
-# Data exploration
-Change the dataset path in DataExploration.Rmd to the folder where you put the data.
-We make a basic data exploration in file `DataExploration.Rmd`. The results boxplots are shown in the file.
-
+## Data preparation 
+1. Put the experiment data in the folder `data/`. The data file should be named as format `trialNumber_browser_notificationStatus_notifiactionFrequency_notificationDistribution`. For example, `trial2_chrome_off_low_even.csv` is the data file for the second dataset. 
+2. Change the folderpath in 'explore.py' to the folder where you put the data.
+3. Change the resultpath in 'explore.py' to the folder where you want to put the results.
+4. Parse the collected data.
+ ```
+   python3 data_parser.py
+   ```
+We generate the combined data file `final_data.txt` and the statistics description are shown in the file.
 
 ## Data Analysis 
+### Installation
+RStudio version 2022.12.0+353 should be installed with R version 4.2.2.
+The R packages plyr, effsize and tidyr need to be installed by running the following commands in RStudio.
+```R
+install.packages("plyr")
+install.packages("effsize")
+install.packages("tidyr")
+```
+### Usage
+1. `final_data.txt` is the data we used to explore and analyze.
+2. `data_exploration.Rmd` is used to perform an approximate analysis of the data collected. The results boxplots are shown in the file.
+3. `data_analysis.Rmd` is used to conduct our data analysis which include both plots generation and statistical analysis based on our collected and processed data.
 
-(**TODO**)
+Note: Before running these two `.Rmd` files, we need change the dataset path to the folder where you put the data.
+```{R}
+data0 = read.table("pathname/combined.txt", header = TRUE)
+
+```
+
+
+
 
 ## Andriod-Runner-Kit (Experimental Process)
 
