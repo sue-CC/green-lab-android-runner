@@ -6,6 +6,26 @@ The replication package includes two parts: data analysis(include data) and expe
 pip3 install -r requirements.txt
 ``` -->
 
+## Directory Structure
+
+### Branch ReplicationPackage (This Branch)
+
+```
+├───00-data
+    All the energy data collected during the experimental procedure.
+├───01-data-processing
+    Simple preview Python scripts for the collected data.
+├───02-analysis
+    R scripts for data analysis and processing.
+    Processed final data.
+└───03-plots
+    Figures used in the paper.
+```
+
+### Branch android-runner-kit
+
+
+
 ## Data preparation
 
 1. Put the experiment data in the folder `data/`. The data file should be named as format `trialNumber_browser_notificationStatus_notifiactionFrequency_notificationDistribution`. For example, `trial2_chrome_off_low_even.csv` is the data file for the second dataset.
