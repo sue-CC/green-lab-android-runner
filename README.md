@@ -42,7 +42,7 @@ requirements.txt
 ├───exp
 │   └───telethon
         telethon Python library and its configuration files.
-    Experimental scripts of us, including the essential configuration files.
+    Experimental scripts from us, including the essential configuration files.
 ----------------------------------------------------------------
 Files in the root directory of this repository:
 __main__.py
