@@ -20,6 +20,12 @@ pip3 install -r requirements.txt
     Processed final data.
 └───03-plots
     Figures used in the paper.
+----------------------------------------------------------------
+Files in the root directory of this repository:
+experiment-settings.pdf
+    The experimental conditions of each trial.
+requirements.txt
+    Python dependencies list used by the Python scripts for directory '01-data-processing'.
 ```
 
 ### Branch android-runner-kit
