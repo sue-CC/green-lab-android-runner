@@ -14,7 +14,7 @@ pip3 install -r requirements.txt
 ├───00-data
     All the energy data collected during the experimental procedure.
 ├───01-data-processing
-    Simple preview Python scripts for the collected data.
+    Python scripts for simple preview of the collected data.
 ├───02-analysis
     R scripts for data analysis and processing.
     Processed final data.
@@ -24,7 +24,30 @@ pip3 install -r requirements.txt
 
 ### Branch android-runner-kit
 
-
+```
+├───AndroidRunner
+    (The major part of) Source of Android Runner testing framework/
+├───docs
+    Some tutorials of Android Runner.
+├───documentation
+    Paper and architectual diagram of Android Runner.
+├───examples
+    Examples of experimental scripts (including configuration files if needed) required when using Android runner to automate different profilers.
+├───exp
+│   └───telethon
+        telethon Python library and its configuration files.
+    Experimental scripts of us, including the essential configuration files.
+----------------------------------------------------------------
+Files in the root directory of this repository:
+__main__.py
+    The entry point of Android Runner.
+devices.json
+    The device list used by Android Runner.
+paths.py
+    Common paths used by Android Runner.
+requirements.txt
+    Python dependencies list.
+```
 
 ## Data preparation
 
