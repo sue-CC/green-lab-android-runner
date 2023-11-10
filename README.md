@@ -42,7 +42,7 @@ requirements.txt
 ├───exp
 │   └───telethon
         telethon Python library and its configuration files.
-    Experimental scripts of us, including the essential configuration files.
+    Experimental scripts from us, including the essential configuration files.
 ----------------------------------------------------------------
 Files in the root directory of this repository:
 __main__.py
@@ -202,3 +202,9 @@ python3 run.py --config exp/cfg-firefox.json
 ```
 
 Then you do not need to do anything else. The whole experiment will be executed automatically. You can check the progress of the experiment in the terminal. The experimental results (energy data in CSV files) are saved in the exp/output directory.
+
+### Python Script Configuration
+
+To run the Python Script successfully, you need to replace your own Telegram api idendication in the [configuration file](https://github.com/Yunabell-VU/green-lab-web-push/blob/android-runner-kit/exp/telethon/config.json) under the `exp/telethon` folder from `android-runner-kit` branch. You can obtain the `api_id` and `api_hash` from [my.telegram](https://my.telegram.org), under API Development.
+
+The `config.json` file allows experimenters to alter the settings of message sending patterns.
