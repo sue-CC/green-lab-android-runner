@@ -37,7 +37,7 @@ firefox_on = data0[data0$browser == "firefox"&data0$notification_status == "on",
 ```{r echo=FALSE}
 
 #box plot
-pdf("Browser_status.pdf", width = 20, height = 10)
+pdf("../03-plots/Browser_status.pdf", width = 20, height = 10)
 par(mar = c(7, 7, 4, 2) + 0.8)
 par(mgp = c(5, 2, 0))
 chrome_status = list(x= chrome_off$Energy_trapz.J, y = chrome_on$Energy_trapz.J., z = firefox_off$Energy_trapz.J., w = firefox_on$Energy_trapz.J.)
@@ -59,7 +59,7 @@ chrome_high_burst = data0[data0$browser == "chrome"&data0$notification_status ==
 ```{r echo=FALSE}
 
 #box plot
-pdf("Chrome_pattern.pdf", width = 20, height = 10)
+pdf("../03-plots/Chrome_pattern.pdf", width = 20, height = 10)
 par(mar = c(7, 7, 4, 2) + 0.8)
 par(mgp = c(5, 2, 0))
 chrome_notification = list(x= chrome_idle$Energy_trapz.J, y = chrome_low_even$Energy_trapz.J., z = chrome_low_burst$Energy_trapz.J., w = chrome_high_even$Energy_trapz.J., v = chrome_high_burst$Energy_trapz.J.)
@@ -85,7 +85,7 @@ firefox_high_burst = data0[data0$browser == "firefox"&data0$notification_status 
 ```{r}
 
 #box plot
-pdf("Firefox_pattern.pdf", width = 20, height = 10)
+pdf("../03-plots/Firefox_pattern.pdf", width = 20, height = 10)
 par(mar = c(7, 7, 4, 2) + 0.8)
 par(mgp = c(5, 2, 0))
 firefox_notification = list(x= firefox_idle$Energy_trapz.J, y = firefox_low_even$Energy_trapz.J., z = firefox_low_burst$Energy_trapz.J., w = firefox_high_even$Energy_trapz.J., v = firefox_high_burst$Energy_trapz.J.)

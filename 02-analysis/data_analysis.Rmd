@@ -36,7 +36,7 @@ firefox_on = data0[data0$browser == "firefox"&data0$notification_status == "on",
 For chrome:
 
 ```{r}
-pdf("nor-chrome.pdf")
+pdf("../03-plots/nor-chrome.pdf")
 par(mfrow=c(2,2)) # two plots in one row next to each other
 plot(density(chrome_on$Energy_trapz.J.), main = "Density plot of chrome-on")
 qqnorm(chrome_on$Energy_trapz.J., main = "Q-Q plot of chrome-on")
@@ -50,7 +50,7 @@ dev.off()
 For Firefox:
 
 ```{r}
-pdf("nor-fire.pdf")
+pdf("../03-plots/nor-fire.pdf")
 par(mfrow=c(2,2)) # two plots in one row next to each other
 plot(density(firefox_on$Energy_trapz.J.), main = "Density plot of firefox-on" )
 qqnorm(firefox_on$Energy_trapz.J.,  main = "Q-Q plot of firefox-on")
@@ -73,7 +73,7 @@ wilcox.test(firefox_off$Energy_trapz.J., firefox_on$Energy_trapz.J., alternative
 *Normality check*
 
 ```{r}
-pdf("nor-dif.pdf")
+pdf("../03-plots/nor-dif.pdf")
 dif_chr = chrome_on$Energy_trapz.J. - chrome_off$Energy_trapz.J. 
 dif_fire = firefox_on$Energy_trapz.J. - firefox_off$Energy_trapz.J. # Calculation of the increase in energy consumption due to switching on notifications
 par(mfrow=c(2,2)) # two plots in one row next to each other
@@ -142,7 +142,7 @@ Density and Q-Q plots:
 
 ```{r}
 # frequency
-pdf("nor-fre.pdf")
+pdf("../03-plots/nor-fre.pdf")
 par(mfrow=c(3,4))
 # chrome idle
 plot(density(chrome_on21idle$Energy_trapz.J. - chrome_off21idle$Energy_trapz.J.), main = "chrome idle")
@@ -167,7 +167,7 @@ dev.off()
 
 ```{r}
 # distribution
-pdf("nor-dist.pdf", height = 4, width = 7)
+pdf("../03-plots/nor-dist.pdf", height = 4, width = 7)
 par(mfrow=c(2,4))
 # chrome burst
 plot(density(chrome_on22burst$Energy_trapz.J. - chrome_off22burst$Energy_trapz.J.), main = "chrome burst")
@@ -205,7 +205,7 @@ Box plots:
 
 ```{r}
 # box plots of chrome
-pdf("box-chrome.pdf",height = 4, width = 8)
+pdf("../03-plots/box-chrome.pdf", height = 4, width = 8)
 par(mfrow=c(1,2))
 chrome_on$frequency = factor(chrome_on$frequency, levels = c("idle", "low", "high"))
 boxplot((chrome_on$Energy_trapz.J. - chrome_off$Energy_trapz.J.) ~ chrome_on$frequency, xlab = "Sending frequency", ylab = "Energy consumption")
