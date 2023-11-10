@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 **Import data**
 
 ```{r}
-data0 = read.table("/Users/suecai/Desktop/Green Lab/combined.txt", header = TRUE)
+data0 = read.table("/Users/zhaoyiming/Documents/GreenLab/green-lab-web-push/02-analysis/final_data.txt", header = TRUE)
 head(data0)
 ```
 
@@ -37,11 +37,16 @@ firefox_on = data0[data0$browser == "firefox"&data0$notification_status == "on",
 ```{r echo=FALSE}
 
 #box plot
+pdf("Browser_status.pdf", width = 20, height = 10)
+par(mar = c(7, 7, 4, 2) + 0.8)
+par(mgp = c(5, 2, 0))
 chrome_status = list(x= chrome_off$Energy_trapz.J, y = chrome_on$Energy_trapz.J., z = firefox_off$Energy_trapz.J., w = firefox_on$Energy_trapz.J.)
-boxplot(chrome_status, names = c("chrome_off", "chrome_on", "firefox_off", "firefox_on"), main = "Boxplot of Chrome and Firefox", xlab = "browsers and notification status", ylab = "Energy_trapz.J")
+boxplot(chrome_status, names = c("chrome_off", "chrome_on", "firefox_off", "firefox_on"), xlab = "browser and notification status of PWA", ylab = "Energy_trapz.J", cex.lab = 2.5, cex.axis = 2)
+dev.off()
 ```
 
-**RQ2: Imapct of distribution patterns** (Chrome)
+
+** RQ2: Imapct of distribution patterns** (Chrome)
 
 ```{r echo=FALSE}
 chrome_idle = data0[data0$browser == "chrome"&data0$notification_status == "on"&data0$frequency == "idle",]
@@ -54,14 +59,22 @@ chrome_high_burst = data0[data0$browser == "chrome"&data0$notification_status ==
 ```{r echo=FALSE}
 
 #box plot
+pdf("Chrome_pattern.pdf", width = 20, height = 10)
+par(mar = c(7, 7, 4, 2) + 0.8)
+par(mgp = c(5, 2, 0))
 chrome_notification = list(x= chrome_idle$Energy_trapz.J, y = chrome_low_even$Energy_trapz.J., z = chrome_low_burst$Energy_trapz.J., w = chrome_high_even$Energy_trapz.J., v = chrome_high_burst$Energy_trapz.J.)
-boxplot(chrome_notification, names = c("chrome_idle", "chrome_low_even", "chrome_low_burst","chrome_high_even", "chrome_high_burst"), main = "Boxplot of Chrome", xlab = "Notification Patterns", ylab = "Energy_trapz.J")
+boxplot(chrome_notification, names = c("chrome_idle", "chrome_low_even", "chrome_low_burst","chrome_high_even", "chrome_high_burst"), xlab = "Notification Patterns", ylab = "Energy_trapz.J", cex.lab = 2.5, cex.axis = 2)
+dev.off()
+```
+
+```{r echo=FALSE}
 ```
 
 **RQ2: Imapct of distribution patterns** (Firefox)
 
 ```{r echo=FALSE}
 #box plot
+
 firefox_idle = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "idle",]
 firefox_low_even = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "low"&data0$distribution == "even",]
 firefox_low_burst = data0[data0$browser == "firefox"&data0$notification_status == "on"&data0$frequency == "low"&data0$distribution == "burst",]
@@ -72,7 +85,12 @@ firefox_high_burst = data0[data0$browser == "firefox"&data0$notification_status 
 ```{r}
 
 #box plot
+pdf("Firefox_pattern.pdf", width = 20, height = 10)
+par(mar = c(7, 7, 4, 2) + 0.8)
+par(mgp = c(5, 2, 0))
 firefox_notification = list(x= firefox_idle$Energy_trapz.J, y = firefox_low_even$Energy_trapz.J., z = firefox_low_burst$Energy_trapz.J., w = firefox_high_even$Energy_trapz.J., v = firefox_high_burst$Energy_trapz.J.)
-boxplot(firefox_notification, names = c("Firefox_idle", "Firefox_low_even", "Firefox_low_burst","Firefox_high_even", "Firefox_high_burst"), main = "Boxplot of Firefox", xlab = "Notification Patterns", ylab = "Energy_trapz.J")
+boxplot(firefox_notification, names = c("Firefox_idle", "Firefox_low_even", "Firefox_low_burst","Firefox_high_even", "Firefox_high_burst"), xlab = "Notification Patterns", ylab = "Energy_trapz.J", cex.lab = 2.5, cex.axis = 2)
+dev.off()
+```
 
 ```

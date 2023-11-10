@@ -15,8 +15,8 @@ knitr::opts_chunk$set(echo = TRUE)
 **Import data**
 
 ```{r}
-library(effectsize)
-data0 = read.table("/Users/suecai/Desktop/Green Lab/combined.txt", header = TRUE)
+#library(effectsize)
+data0 = read.table("/Users/zhaoyiming/Documents/GreenLab/green-lab-web-push/02-analysis/final_data.txt", header = TRUE)
 head(data0)
 ```
 
@@ -36,18 +36,21 @@ firefox_on = data0[data0$browser == "firefox"&data0$notification_status == "on",
 For chrome:
 
 ```{r}
+pdf("nor-chrome.pdf")
 par(mfrow=c(2,2)) # two plots in one row next to each other
 plot(density(chrome_on$Energy_trapz.J.), main = "Density plot of chrome-on")
 qqnorm(chrome_on$Energy_trapz.J., main = "Q-Q plot of chrome-on")
 shapiro.test(chrome_on$Energy_trapz.J.) # check the data normality of differences of notification on 
 plot(density(chrome_off$Energy_trapz.J.) , main = "Density plot of chrome-off")
 qqnorm(chrome_off$Energy_trapz.J., , main = "Q-Q plot of chrome-off")
-shapiro.test(chrome_off$Energy_trapz.J.) # check the data normality of differences of notification on 
+shapiro.test(chrome_off$Energy_trapz.J.) # check the data normality of differences of notification on
+dev.off()
 ```
 
 For Firefox:
 
 ```{r}
+pdf("nor-fire.pdf")
 par(mfrow=c(2,2)) # two plots in one row next to each other
 plot(density(firefox_on$Energy_trapz.J.), main = "Density plot of firefox-on" )
 qqnorm(firefox_on$Energy_trapz.J.,  main = "Q-Q plot of firefox-on")
@@ -55,6 +58,7 @@ shapiro.test(firefox_on$Energy_trapz.J.) # check the data normality when notific
 plot(density(firefox_off$Energy_trapz.J. ), main = "Density plot of firefox-off")
 qqnorm(firefox_off$Energy_trapz.J., , main = "Q-Q plot of firefox-off")
 shapiro.test(firefox_off$Energy_trapz.J.) # check the data normality when notification off under Firefox
+dev.off()
 ```
 
 *Hypothesis test*
@@ -69,6 +73,7 @@ wilcox.test(firefox_off$Energy_trapz.J., firefox_on$Energy_trapz.J., alternative
 *Normality check*
 
 ```{r}
+pdf("nor-dif.pdf")
 dif_chr = chrome_on$Energy_trapz.J. - chrome_off$Energy_trapz.J. 
 dif_fire = firefox_on$Energy_trapz.J. - firefox_off$Energy_trapz.J. # Calculation of the increase in energy consumption due to switching on notifications
 par(mfrow=c(2,2)) # two plots in one row next to each other
@@ -77,7 +82,8 @@ qqnorm(dif_chr,  main = "Q-Q plot of energy dif in chrome")
 shapiro.test(dif_chr) 
 plot(density(dif_fire), main = "Density plot of energy dif in Firefox")
 qqnorm(dif_fire , main = "Q-Q plot of energy dif in Firefox")
-shapiro.test(dif_fire) 
+shapiro.test(dif_fire)
+dev.off()
 ```
 
 *Hypothesis test*
@@ -136,6 +142,7 @@ Density and Q-Q plots:
 
 ```{r}
 # frequency
+pdf("nor-fre.pdf")
 par(mfrow=c(3,4))
 # chrome idle
 plot(density(chrome_on21idle$Energy_trapz.J. - chrome_off21idle$Energy_trapz.J.), main = "chrome idle")
@@ -155,7 +162,12 @@ qqnorm(firefox_on21low$Energy_trapz.J. - firefox_off21low$Energy_trapz.J., main 
 # firefox high
 plot(density(firefox_on21high$Energy_trapz.J. - firefox_off21high$Energy_trapz.J.), main = "firefox high")
 qqnorm(firefox_on21high$Energy_trapz.J. - firefox_off21high$Energy_trapz.J., main = "firefox high")
+dev.off()
+```
+
+```{r}
 # distribution
+pdf("nor-dist.pdf", height = 4, width = 7)
 par(mfrow=c(2,4))
 # chrome burst
 plot(density(chrome_on22burst$Energy_trapz.J. - chrome_off22burst$Energy_trapz.J.), main = "chrome burst")
@@ -169,6 +181,7 @@ qqnorm(firefox_on22burst$Energy_trapz.J. - firefox_off22burst$Energy_trapz.J., m
 # firefox even
 plot(density(firefox_on22even$Energy_trapz.J. - firefox_off22even$Energy_trapz.J.), main = "firefox even")
 qqnorm(firefox_on22even$Energy_trapz.J. - firefox_off22even$Energy_trapz.J., main = "firefox even")
+dev.off()
 ```
 
 Shapiro tests:
@@ -192,15 +205,20 @@ Box plots:
 
 ```{r}
 # box plots of chrome
+pdf("box-chrome.pdf",height = 4, width = 8)
 par(mfrow=c(1,2))
 chrome_on$frequency = factor(chrome_on$frequency, levels = c("idle", "low", "high"))
-boxplot((chrome_on$Energy_trapz.J. - chrome_off$Energy_trapz.J.) ~ chrome_on$frequency, main = "Frequency under chrome", xlab = "Sending frequency", ylab = "Energy consumption")
-boxplot((chrome_on2$Energy_trapz.J. - chrome_off2$Energy_trapz.J.) ~ chrome_on2$distribution, main = "Distribution under chrome", xlab = "Sending distribution pattern", ylab = "Energy consumption")
+boxplot((chrome_on$Energy_trapz.J. - chrome_off$Energy_trapz.J.) ~ chrome_on$frequency, xlab = "Sending frequency", ylab = "Energy consumption")
+boxplot((chrome_on2$Energy_trapz.J. - chrome_off2$Energy_trapz.J.) ~ chrome_on2$distribution, xlab = "Sending distribution pattern", ylab = "Energy consumption")
 # box plots of Firefox
 firefox_on$frequency = factor(chrome_on$frequency, levels = c("idle", "low", "high"))
 par(mfrow=c(1,2))
-boxplot((firefox_on$Energy_trapz.J. - firefox_off$Energy_trapz.J.) ~ firefox_on$frequency, main = "Frequency under Firefox", xlab = "Sending frequency", ylab = "Energy consumption")
-boxplot((firefox_on2$Energy_trapz.J. - firefox_off2$Energy_trapz.J.) ~ firefox_on2$distribution, main = "Distribution under Firefox", xlab = "Sending distribution pattern", ylab = "Energy consumption")
+boxplot((firefox_on$Energy_trapz.J. - firefox_off$Energy_trapz.J.) ~ firefox_on$frequency, xlab = "Sending frequency", ylab = "Energy consumption")
+boxplot((firefox_on2$Energy_trapz.J. - firefox_off2$Energy_trapz.J.) ~ firefox_on2$distribution, xlab = "Sending distribution pattern", ylab = "Energy consumption")
+dev.off()
+```
+
+```{r}
 ```
 statistical tests:
 ```{r}
